@@ -2,12 +2,15 @@ package com.example.kebapp.ui.ordini;
 
 import android.os.Bundle;
 
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.example.kebapp.R;
 
@@ -30,9 +33,21 @@ public class OrdiniFragment extends Fragment
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState)
     {
-        getView().findViewById(R.id.buttonOrdini).setOnClickListener(item ->
+        String[] ordini = {"Ordine 1", "Ordine 2", "Ordine 3", "Ordine 4", "Ordine 5"};
+
+        LinearLayout cards = getView().findViewById(R.id.cards);
+        CardView newCard;
+        TextView newTextView;
+
+        for (int i=0; i < ordini.length; i++)
         {
-            Log.d(TAG, "click");
-        });
+            newCard = new CardView(getContext());
+            getLayoutInflater().inflate(R.layout.card_base, newCard);
+            newTextView = newCard.findViewById(R.id.textViewMain);
+
+            newTextView.setText(ordini[i]);
+
+            cards.addView(newCard);
+        }
     }
 }
