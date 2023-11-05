@@ -1,0 +1,174 @@
+[
+    {
+        "merged": "com.example.kebapp-merged_res-44:/mipmap-xxhdpi_ic_launcher_round.webp.flat",
+        "source": "com.example.kebapp-main-46:/mipmap-xxhdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.example.kebapp-merged_res-44:/drawable_ic_launcher_foreground.xml.flat",
+        "source": "com.example.kebapp-main-46:/drawable/ic_launcher_foreground.xml"
+    },
+    {
+        "merged": "com.example.kebapp-merged_res-44:/drawable_username_logo.xml.flat",
+        "source": "com.example.kebapp-main-46:/drawable/username_logo.xml"
+    },
+    {
+        "merged": "com.example.kebapp-merged_res-44:/layout_fragment_aggiungi_ordine.xml.flat",
+        "source": "com.example.kebapp-main-46:/layout/fragment_aggiungi_ordine.xml"
+    },
+    {
+        "merged": "com.example.kebapp-merged_res-44:/mipmap-xxhdpi_ic_launcher_foreground.webp.flat",
+        "source": "com.example.kebapp-main-46:/mipmap-xxhdpi/ic_launcher_foreground.webp"
+    },
+    {
+        "merged": "com.example.kebapp-merged_res-44:/layout_activity_login.xml.flat",
+        "source": "com.example.kebapp-main-46:/layout/activity_login.xml"
+    },
+    {
+        "merged": "com.example.kebapp-merged_res-44:/font_aclonica.xml.flat",
+        "source": "com.example.kebapp-main-46:/font/aclonica.xml"
+    },
+    {
+        "merged": "com.example.kebapp-merged_res-44:/mipmap-xhdpi_ic_launcher.webp.flat",
+        "source": "com.example.kebapp-main-46:/mipmap-xhdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.example.kebapp-merged_res-44:/menu_bottom_nav_menu.xml.flat",
+        "source": "com.example.kebapp-main-46:/menu/bottom_nav_menu.xml"
+    },
+    {
+        "merged": "com.example.kebapp-merged_res-44:/mipmap-hdpi_ic_launcher.webp.flat",
+        "source": "com.example.kebapp-main-46:/mipmap-hdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.example.kebapp-merged_res-44:/layout_fragment_ordini.xml.flat",
+        "source": "com.example.kebapp-main-46:/layout/fragment_ordini.xml"
+    },
+    {
+        "merged": "com.example.kebapp-merged_res-44:/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "com.example.kebapp-main-46:/mipmap-anydpi-v26/ic_launcher_round.xml"
+    },
+    {
+        "merged": "com.example.kebapp-merged_res-44:/font_alata.xml.flat",
+        "source": "com.example.kebapp-main-46:/font/alata.xml"
+    },
+    {
+        "merged": "com.example.kebapp-merged_res-44:/mipmap-xxhdpi_ic_launcher.webp.flat",
+        "source": "com.example.kebapp-main-46:/mipmap-xxhdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.example.kebapp-merged_res-44:/layout_fragment_profilo.xml.flat",
+        "source": "com.example.kebapp-main-46:/layout/fragment_profilo.xml"
+    },
+    {
+        "merged": "com.example.kebapp-merged_res-44:/drawable_login_background1.jpg.flat",
+        "source": "com.example.kebapp-main-46:/drawable/login_background1.jpg"
+    },
+    {
+        "merged": "com.example.kebapp-merged_res-44:/xml_data_extraction_rules.xml.flat",
+        "source": "com.example.kebapp-main-46:/xml/data_extraction_rules.xml"
+    },
+    {
+        "merged": "com.example.kebapp-merged_res-44:/drawable_baseline_person_24.xml.flat",
+        "source": "com.example.kebapp-main-46:/drawable/baseline_person_24.xml"
+    },
+    {
+        "merged": "com.example.kebapp-merged_res-44:/mipmap-xhdpi_ic_launcher_round.webp.flat",
+        "source": "com.example.kebapp-main-46:/mipmap-xhdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.example.kebapp-merged_res-44:/drawable_ic_launcher_background.xml.flat",
+        "source": "com.example.kebapp-main-46:/drawable/ic_launcher_background.xml"
+    },
+    {
+        "merged": "com.example.kebapp-merged_res-44:/mipmap-xxxhdpi_ic_launcher_round.webp.flat",
+        "source": "com.example.kebapp-main-46:/mipmap-xxxhdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.example.kebapp-merged_res-44:/drawable_baseline_add_16.xml.flat",
+        "source": "com.example.kebapp-main-46:/drawable/baseline_add_16.xml"
+    },
+    {
+        "merged": "com.example.kebapp-merged_res-44:/drawable_baseline_list_alt_24.xml.flat",
+        "source": "com.example.kebapp-main-46:/drawable/baseline_list_alt_24.xml"
+    },
+    {
+        "merged": "com.example.kebapp-merged_res-44:/drawable_round_corners.xml.flat",
+        "source": "com.example.kebapp-main-46:/drawable/round_corners.xml"
+    },
+    {
+        "merged": "com.example.kebapp-merged_res-44:/layout_item_prodotto.xml.flat",
+        "source": "com.example.kebapp-main-46:/layout/item_prodotto.xml"
+    },
+    {
+        "merged": "com.example.kebapp-merged_res-44:/mipmap-xxxhdpi_ic_launcher_foreground.webp.flat",
+        "source": "com.example.kebapp-main-46:/mipmap-xxxhdpi/ic_launcher_foreground.webp"
+    },
+    {
+        "merged": "com.example.kebapp-merged_res-44:/xml_backup_rules.xml.flat",
+        "source": "com.example.kebapp-main-46:/xml/backup_rules.xml"
+    },
+    {
+        "merged": "com.example.kebapp-merged_res-44:/navigation_mobile_navigation.xml.flat",
+        "source": "com.example.kebapp-main-46:/navigation/mobile_navigation.xml"
+    },
+    {
+        "merged": "com.example.kebapp-merged_res-44:/mipmap-mdpi_ic_launcher_foreground.webp.flat",
+        "source": "com.example.kebapp-main-46:/mipmap-mdpi/ic_launcher_foreground.webp"
+    },
+    {
+        "merged": "com.example.kebapp-merged_res-44:/layout_activity_main.xml.flat",
+        "source": "com.example.kebapp-main-46:/layout/activity_main.xml"
+    },
+    {
+        "merged": "com.example.kebapp-merged_res-44:/mipmap-mdpi_ic_launcher.webp.flat",
+        "source": "com.example.kebapp-main-46:/mipmap-mdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.example.kebapp-merged_res-44:/drawable_password_key.xml.flat",
+        "source": "com.example.kebapp-main-46:/drawable/password_key.xml"
+    },
+    {
+        "merged": "com.example.kebapp-merged_res-44:/drawable_baseline_add_24.xml.flat",
+        "source": "com.example.kebapp-main-46:/drawable/baseline_add_24.xml"
+    },
+    {
+        "merged": "com.example.kebapp-merged_res-44:/font_bai_jamjuree_extralight.xml.flat",
+        "source": "com.example.kebapp-main-46:/font/bai_jamjuree_extralight.xml"
+    },
+    {
+        "merged": "com.example.kebapp-merged_res-44:/mipmap-hdpi_ic_launcher_foreground.webp.flat",
+        "source": "com.example.kebapp-main-46:/mipmap-hdpi/ic_launcher_foreground.webp"
+    },
+    {
+        "merged": "com.example.kebapp-merged_res-44:/mipmap-xxxhdpi_ic_launcher.webp.flat",
+        "source": "com.example.kebapp-main-46:/mipmap-xxxhdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.example.kebapp-merged_res-44:/mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "com.example.kebapp-main-46:/mipmap-anydpi-v26/ic_launcher.xml"
+    },
+    {
+        "merged": "com.example.kebapp-merged_res-44:/mipmap-xhdpi_ic_launcher_foreground.webp.flat",
+        "source": "com.example.kebapp-main-46:/mipmap-xhdpi/ic_launcher_foreground.webp"
+    },
+    {
+        "merged": "com.example.kebapp-merged_res-44:/font_akaya_telivigala.xml.flat",
+        "source": "com.example.kebapp-main-46:/font/akaya_telivigala.xml"
+    },
+    {
+        "merged": "com.example.kebapp-merged_res-44:/mipmap-hdpi_ic_launcher_round.webp.flat",
+        "source": "com.example.kebapp-main-46:/mipmap-hdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.example.kebapp-merged_res-44:/drawable_baseline_post_add_24.xml.flat",
+        "source": "com.example.kebapp-main-46:/drawable/baseline_post_add_24.xml"
+    },
+    {
+        "merged": "com.example.kebapp-merged_res-44:/mipmap-mdpi_ic_launcher_round.webp.flat",
+        "source": "com.example.kebapp-main-46:/mipmap-mdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.example.kebapp-merged_res-44:/layout_card_base.xml.flat",
+        "source": "com.example.kebapp-main-46:/layout/card_base.xml"
+    }
+]

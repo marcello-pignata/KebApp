@@ -17,14 +17,14 @@ public class LoginActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        TextInputLayout textInputLayoutUsername = findViewById(R.id.textInputLayoutUsername);
-        TextInputLayout textInputLayoutPassword = findViewById(R.id.textInputLayoutPassword);
+        TextInputLayout textInputLayoutUsername = findViewById(R.id.usernameView);
+        TextInputLayout textInputLayoutPassword = findViewById(R.id.passwordView);
         textInputLayoutUsername.setErrorIconDrawable(0);
         textInputLayoutPassword.setErrorIconDrawable(0);
 
 
         // ONCLICK PULSANTE LOGIN
-        findViewById(R.id.buttonLogin).setOnClickListener(item ->
+        findViewById(R.id.login_button).setOnClickListener(item ->
         {
             String username = textInputLayoutUsername.getEditText().getText().toString();
             String password = textInputLayoutPassword.getEditText().getText().toString();
