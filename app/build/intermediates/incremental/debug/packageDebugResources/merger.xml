@@ -15,7 +15,7 @@
         <item>@font/akaya_telivigala</item>
         <item>@font/alata</item>
         <item>@font/bai_jamjuree_extralight</item>
-    </array></file><file path="C:\Users\Devis\AndroidStudioProjects\KebApp\app\src\main\res\values\strings.xml" qualifiers=""><string name="app_name">KebApp</string><string name="title_activity_main">MainActivity</string><string name="registrazione"><a href="http://google.com">Non sei ancora registrato? Cliccla qui</a></string><string name="recuperopass"><a href="http://google.com"> Password dimenticata?</a></string></file><file path="C:\Users\Devis\AndroidStudioProjects\KebApp\app\src\main\res\values\themes.xml" qualifiers=""><style name="Theme.KebApp" parent="Theme.MaterialComponents.Light.NoActionBar">
+    </array></file><file path="C:\Users\Devis\AndroidStudioProjects\KebApp\app\src\main\res\values\strings.xml" qualifiers=""><string name="app_name">KebApp</string><string name="title_activity_main">MainActivity</string><string name="registrazione"><a href="http://google.com">Non sei ancora registrato? Cliccla qui</a></string><string name="recuperopass"><a href="http://google.com">Password dimenticata?</a></string><string name="title_activity_login">LoginActivity</string></file><file path="C:\Users\Devis\AndroidStudioProjects\KebApp\app\src\main\res\values\themes.xml" qualifiers=""><style name="Theme.KebApp" parent="Theme.MaterialComponents.Light.NoActionBar">
         
         <item name="colorPrimary">@color/purple_500</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>

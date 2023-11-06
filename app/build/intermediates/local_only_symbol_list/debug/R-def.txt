@@ -53,7 +53,7 @@ id nav_view
 id navigation_aggiungi_ordine
 id navigation_ordini
 id navigation_profilo
-id passwordView
+id password_view
 id recyclerViewProdotti
 id scrollViewAggiungiOrdine
 id scrollViewOrdini
@@ -70,7 +70,7 @@ id textViewNome
 id textViewNumero
 id textViewProdotti
 id textViewTotale
-id usernameView
+id username_view
 layout activity_login
 layout activity_main
 layout card_base
@@ -86,6 +86,7 @@ navigation mobile_navigation
 string app_name
 string recuperopass
 string registrazione
+string title_activity_login
 string title_activity_main
 style Theme.KebApp
 xml backup_rules

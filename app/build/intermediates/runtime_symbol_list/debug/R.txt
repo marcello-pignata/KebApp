@@ -3481,8 +3481,8 @@ int id parent 0x7f0a016a
 int id parentPanel 0x7f0a016b
 int id parentRelative 0x7f0a016c
 int id parent_matrix 0x7f0a016d
-int id passwordView 0x7f0a016e
 int id password_toggle 0x7f0a016f
+int id password_view 0x7f0a021b
 int id path 0x7f0a0170
 int id pathRelative 0x7f0a0171
 int id peekHeight 0x7f0a0172
@@ -3635,7 +3635,7 @@ int id uniform 0x7f0a0204
 int id unlabeled 0x7f0a0205
 int id up 0x7f0a0206
 int id useLogo 0x7f0a0207
-int id usernameView 0x7f0a0208
+int id username_view 0x7f0a021c
 int id vertical_only 0x7f0a0209
 int id view_offset_helper 0x7f0a020a
 int id view_transition 0x7f0a020b
@@ -4024,6 +4024,7 @@ int string searchview_navigation_content_description 0x7f1300a1
 int string side_sheet_accessibility_pane_title 0x7f1300a2
 int string side_sheet_behavior 0x7f1300a3
 int string status_bar_notification_info_overflow 0x7f1300a4
+int string title_activity_login 0x7f1300a6
 int string title_activity_main 0x7f1300a5
 int style AlertDialog_AppCompat 0x7f140000
 int style AlertDialog_AppCompat_Light 0x7f140001

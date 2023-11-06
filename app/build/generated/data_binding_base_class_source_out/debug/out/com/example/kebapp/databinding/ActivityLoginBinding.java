@@ -97,7 +97,7 @@ public final class ActivityLoginBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.passwordView;
+      id = R.id.password_view;
       TextInputEditText passwordView = ViewBindings.findChildViewById(rootView, id);
       if (passwordView == null) {
         break missingId;
@@ -109,7 +109,7 @@ public final class ActivityLoginBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.usernameView;
+      id = R.id.username_view;
       TextInputEditText usernameView = ViewBindings.findChildViewById(rootView, id);
       if (usernameView == null) {
         break missingId;

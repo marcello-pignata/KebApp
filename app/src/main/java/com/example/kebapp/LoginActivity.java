@@ -16,9 +16,8 @@ public class LoginActivity extends AppCompatActivity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
-        TextInputLayout textInputLayoutUsername = findViewById(R.id.usernameView);
-        TextInputLayout textInputLayoutPassword = findViewById(R.id.passwordView);
+        TextInputLayout textInputLayoutUsername = findViewById(R.id.username_view);
+        TextInputLayout textInputLayoutPassword = findViewById(R.id.password_view);
         textInputLayoutUsername.setErrorIconDrawable(0);
         textInputLayoutPassword.setErrorIconDrawable(0);
 

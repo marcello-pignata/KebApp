@@ -28,9 +28,9 @@
         android:testOnly="true"
         android:theme="@style/Theme.KebApp" >
         <activity
-            android:name="com.example.kebapp.MainActivity"
+            android:name="com.example.kebapp.LoginActivity"
             android:exported="true"
-            android:label="@string/title_activity_main" >
+            android:label="@string/title_activity_login" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -38,8 +38,9 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.example.kebapp.LoginActivity"
-            android:exported="true" >
+            android:name="com.example.kebapp.MainActivity"
+            android:exported="true"
+            android:label="@string/title_activity_main" >
         </activity>
 
         <provider
