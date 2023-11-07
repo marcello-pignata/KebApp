@@ -1,0 +1,34 @@
+[
+    {
+        "merged": "C:\\Users\\Devis\\.gradle\\daemon\\8.0\\com.example.kebapp-mergeDebugResources-43:\\layout\\item_prodotto.xml",
+        "source": "C:\\Users\\Devis\\.gradle\\daemon\\8.0\\com.example.kebapp-main-46:\\layout\\item_prodotto.xml"
+    },
+    {
+        "merged": "C:\\Users\\Devis\\.gradle\\daemon\\8.0\\com.example.kebapp-mergeDebugResources-43:\\layout\\fragment_aggiungi_ordine.xml",
+        "source": "C:\\Users\\Devis\\.gradle\\daemon\\8.0\\com.example.kebapp-main-46:\\layout\\fragment_aggiungi_ordine.xml"
+    },
+    {
+        "merged": "C:\\Users\\Devis\\.gradle\\daemon\\8.0\\com.example.kebapp-mergeDebugResources-43:\\layout\\fragment_ordini.xml",
+        "source": "C:\\Users\\Devis\\.gradle\\daemon\\8.0\\com.example.kebapp-main-46:\\layout\\fragment_ordini.xml"
+    },
+    {
+        "merged": "C:\\Users\\Devis\\.gradle\\daemon\\8.0\\com.example.kebapp-mergeDebugResources-43:\\layout\\fragment_profilo.xml",
+        "source": "C:\\Users\\Devis\\.gradle\\daemon\\8.0\\com.example.kebapp-main-46:\\layout\\fragment_profilo.xml"
+    },
+    {
+        "merged": "C:\\Users\\Devis\\.gradle\\daemon\\8.0\\com.example.kebapp-mergeDebugResources-43:\\layout\\card_base.xml",
+        "source": "C:\\Users\\Devis\\.gradle\\daemon\\8.0\\com.example.kebapp-main-46:\\layout\\card_base.xml"
+    },
+    {
+        "merged": "com.example.kebapp-mergeDebugResources-43:/layout/activity_login.xml",
+        "source": "com.example.kebapp-main-46:/layout/activity_login.xml"
+    },
+    {
+        "merged": "C:\\Users\\Devis\\.gradle\\daemon\\8.0\\com.example.kebapp-mergeDebugResources-43:\\layout\\activity_login.xml",
+        "source": "C:\\Users\\Devis\\.gradle\\daemon\\8.0\\com.example.kebapp-main-46:\\layout\\activity_login.xml"
+    },
+    {
+        "merged": "C:\\Users\\Devis\\.gradle\\daemon\\8.0\\com.example.kebapp-mergeDebugResources-43:\\layout\\activity_main.xml",
+        "source": "C:\\Users\\Devis\\.gradle\\daemon\\8.0\\com.example.kebapp-main-46:\\layout\\activity_main.xml"
+    }
+]
