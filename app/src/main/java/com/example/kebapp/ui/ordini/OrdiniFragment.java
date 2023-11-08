@@ -5,7 +5,6 @@ import android.os.Bundle;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -42,8 +41,8 @@ public class OrdiniFragment extends Fragment
         for (int i=0; i < ordini.length; i++)
         {
             newCard = new CardView(getContext());
-            getLayoutInflater().inflate(R.layout.card_base, newCard);
-            newTextView = newCard.findViewById(R.id.textViewMain);
+            getLayoutInflater().inflate(R.layout.card_ordine, newCard);
+            newTextView = newCard.findViewById(R.id.textViewOrdine);
 
             newTextView.setText(ordini[i]);
 

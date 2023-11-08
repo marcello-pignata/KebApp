@@ -8,6 +8,7 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.kebapp.Prodotto;
 import com.example.kebapp.R;
 
 import java.util.List;
@@ -15,11 +16,11 @@ import java.util.List;
 public class RecyclerViewProdottiAdapter extends RecyclerView.Adapter<RecyclerViewProdottiAdapter.ViewHolder>
 {
 
-    private List<String> mData;
+    private List<Prodotto> mData;
     private LayoutInflater mInflater;
     private ItemClickListener mClickListener;
 
-    RecyclerViewProdottiAdapter(Context context, List<String> data)
+    RecyclerViewProdottiAdapter(Context context, List<Prodotto> data)
     {
         this.mInflater = LayoutInflater.from(context);
         this.mData = data;
@@ -35,8 +36,9 @@ public class RecyclerViewProdottiAdapter extends RecyclerView.Adapter<RecyclerVi
     @Override
     public void onBindViewHolder(ViewHolder holder, int position)
     {
-        String nome = mData.get(position);
-        holder.myTextView.setText(nome);
+        Prodotto prodotto = mData.get(position);
+        holder.textViewNome.setText(prodotto.nome);
+        holder.textViewQuantita.setText("x" + prodotto.quantita);
     }
 
     // total number of rows
@@ -46,7 +48,7 @@ public class RecyclerViewProdottiAdapter extends RecyclerView.Adapter<RecyclerVi
         return mData.size();
     }
 
-    public void addItem(String item)
+    public void addItem(Prodotto item)
     {
         mData.add(item);
     }
@@ -54,12 +56,14 @@ public class RecyclerViewProdottiAdapter extends RecyclerView.Adapter<RecyclerVi
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener
     {
-        TextView myTextView;
+        TextView textViewNome;
+        TextView textViewQuantita;
 
         ViewHolder(View itemView)
         {
             super(itemView);
-            myTextView = itemView.findViewById(R.id.textViewNome);
+            textViewNome = itemView.findViewById(R.id.textViewNome);
+            textViewQuantita = itemView.findViewById(R.id.textViewQuantita);
             itemView.setOnClickListener(this);
         }
 
@@ -70,7 +74,7 @@ public class RecyclerViewProdottiAdapter extends RecyclerView.Adapter<RecyclerVi
         }
     }
 
-    String getItem(int id)
+    Prodotto getItem(int id)
     {
         return mData.get(id);
     }

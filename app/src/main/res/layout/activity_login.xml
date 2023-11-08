@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linearLayoutLogin"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/login_background1"
@@ -13,16 +13,18 @@
     tools:context=".LoginActivity">
 
     <androidx.cardview.widget.CardView
-        app:cardBackgroundColor="@android:color/transparent"
+        android:id="@+id/cardViewLogin"
         android:layout_width="match_parent"
         android:layout_height="485dp"
         android:layout_margin="50dp"
         android:padding="16dp"
+        app:cardBackgroundColor="@android:color/transparent"
         app:cardCornerRadius="25dp"
         app:cardElevation="200dp">
 
         <LinearLayout
 
+            android:id="@+id/linearLayoutCardViewLogin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
@@ -30,7 +32,7 @@
             android:padding="28dp">
 
             <TextView
-                android:id="@+id/textLogin"
+                android:id="@+id/textViewLogin"
                 android:layout_width="match_parent"
                 android:layout_height="99dp"
                 android:fontFamily="@font/aclonica"
@@ -41,6 +43,7 @@
                 android:textStyle="bold" />
 
             <TextView
+                android:id="@+id/textViewUsername"
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
                 android:fontFamily="@font/alata"
@@ -53,15 +56,17 @@
             </TextView>
 
             <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputLayoutUsername"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
-                app:boxBackgroundColor="@color/white"
-                app:errorEnabled="true"
                 android:background="@drawable/round_corners"
+                app:boxBackgroundColor="@color/white"
                 app:boxStrokeWidth="0dp"
-                app:boxStrokeWidthFocused="0dp">
+                app:boxStrokeWidthFocused="0dp"
+                app:errorEnabled="true">
+
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/username_view"
+                    android:id="@+id/editTextUsername"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:layout_marginTop="3dp"
@@ -71,6 +76,7 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <TextView
+                android:id="@+id/textViewPassword"
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
                 android:fontFamily="@font/alata"
@@ -83,58 +89,58 @@
             </TextView>
 
             <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputLayoutPassword"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
-                app:boxBackgroundColor="@color/white"
-                app:errorEnabled="true"
                 android:background="@drawable/round_corners"
+                app:boxBackgroundColor="@color/white"
                 app:boxStrokeWidth="0dp"
-                app:boxStrokeWidthFocused="0dp">
+                app:boxStrokeWidthFocused="0dp"
+                app:errorEnabled="true">
+
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/password_view"
+                    android:id="@+id/editTextPassword"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:layout_marginTop="3dp"
                     android:drawableLeft="@drawable/password_key"
                     android:drawablePadding="8dp"
-                    android:padding="8dp"
-                    />
+                    android:padding="8dp" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <Button
-                android:backgroundTint="@color/deep_blue"
-                android:id="@+id/login_button"
+                android:id="@+id/buttonLogin"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="25dp"
+                android:backgroundTint="@color/deep_blue"
                 android:text="LOGIN"
                 android:textAlignment="center"
                 android:textStyle="bold"
-                app:cornerRadius="20dp"
-                />
+                app:cornerRadius="20dp" />
 
             <TextView
-                android:id="@+id/link_registrazione"
+                android:id="@+id/textViewRegistrazione"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="25dp"
                 android:autoLink="web"
+                android:fontFamily="@font/aclonica"
                 android:text="@string/registrazione"
                 android:textAlignment="center"
                 android:textColorLink="@color/black"
-                android:fontFamily="@font/aclonica"
                 android:textSize="11dp" />
 
             <TextView
-                android:id="@+id/link_recuperopass"
+                android:id="@+id/textViewRecuperoPassword"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="10dp"
                 android:autoLink="web"
+                android:fontFamily="@font/aclonica"
                 android:text="@string/recuperopass"
                 android:textAlignment="center"
                 android:textColorLink="@color/black"
-                android:fontFamily="@font/aclonica"
                 android:textSize="12dp" />
 
         </LinearLayout>
