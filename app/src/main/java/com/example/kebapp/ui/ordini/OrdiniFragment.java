@@ -42,7 +42,7 @@ public class OrdiniFragment extends Fragment
         {
             newCard = new CardView(getContext());
             getLayoutInflater().inflate(R.layout.card_ordine, newCard);
-            newTextView = newCard.findViewById(R.id.textViewOrdine);
+            newTextView = newCard.findViewById(R.id.textViewNomeCliente);
 
             newTextView.setText(ordini[i]);
 

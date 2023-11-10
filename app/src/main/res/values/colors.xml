@@ -12,4 +12,5 @@
     <color name="lightpink">#f6c7f8</color>
     <color name="orange">#e59852</color>
     <color name="deep_blue">#112637</color>
+    <color name="green_completed">#32CD32</color>
 </resources>
