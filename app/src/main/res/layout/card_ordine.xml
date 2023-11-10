@@ -14,10 +14,12 @@
         android:layout_height="match_parent"
         android:orientation="horizontal"
         android:background="@drawable/round_corners_card">
-    <TextView
-    android:layout_width="40dp"
-    android:layout_height="match_parent"
-    android:background="@drawable/status_background"/>
+
+        <TextView
+            android:id="@+id/textViewColoreStatus"
+            android:layout_width="40dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/status_consegnato" />
         <TextView
             android:layout_width="2dp"
             android:layout_height="match_parent"
@@ -28,7 +30,7 @@
             android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/textViewNomeCliente"
+                android:id="@+id/textViewNomeOrdine"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
@@ -39,14 +41,14 @@
                 android:textStyle="bold"
                 android:fontFamily="@font/alegreya_sc"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/textViewNumeroCliente"
+                app:layout_constraintEnd_toStartOf="@+id/textViewID"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.0" />
 
             <TextView
-                android:id="@+id/textViewOrarioPrevisto"
+                android:id="@+id/textViewOrarioRichiesto"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="1dp"
@@ -56,15 +58,15 @@
                 android:textSize="19dp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/textViewNumeroCliente"
+                app:layout_constraintEnd_toStartOf="@+id/textViewID"
                 app:layout_constraintHorizontal_bias="0.186"
-                app:layout_constraintStart_toEndOf="@+id/textViewNomeCliente"
+                app:layout_constraintStart_toEndOf="@+id/textViewNomeOrdine"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.0" />
 
             <TextView
-                android:id="@+id/textViewNumeroCliente"
-                android:layout_width="75dp"
+                android:id="@+id/textViewID"
+                android:layout_width="wrap_content"
                 android:layout_height="21dp"
                 android:layout_marginTop="5dp"
                 android:fontFamily="@font/alegreya_sc"
@@ -73,13 +75,13 @@
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintHorizontal_bias="0.941"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.0" />
 
             <TextView
-                android:id="@+id/textViewIndirizzoCliente"
+                android:id="@+id/textViewIndirizzoOrdine"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
@@ -93,7 +95,7 @@
                 app:layout_constraintEnd_toStartOf="@+id/textViewApi"
                 app:layout_constraintHorizontal_bias="0.018"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textViewNomeCliente"
+                app:layout_constraintTop_toBottomOf="@+id/textViewNomeOrdine"
                 app:layout_constraintVertical_bias="0.01" />
 
             <TextView
@@ -105,10 +107,10 @@
                 android:text=""
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintHorizontal_bias="0.977"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.223" />
+                app:layout_constraintVertical_bias="0.196" />
 
             <TextView
                 android:id="@+id/textView6"
@@ -119,7 +121,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textViewIndirizzoCliente"
+                app:layout_constraintTop_toBottomOf="@+id/textViewIndirizzoOrdine"
                 app:layout_constraintVertical_bias="0.032" />
 
 
