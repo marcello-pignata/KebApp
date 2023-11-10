@@ -77,10 +77,10 @@ public class SelezionaProdottoActivity extends AppCompatActivity {
             {
                 if(!editTextQuantita.getText().toString().matches("") && !editTextQuantita.getText().toString().equals("0"))
                 {
-                    Prodotto result = listaProdotti.get(finalI);
-                    result.quantita = Integer.parseInt(editTextQuantita.getText().toString());
+                    Prodotto prodotto = listaProdotti.get(finalI);
+                    prodotto.quantita = Integer.parseInt(editTextQuantita.getText().toString());
                     Intent resultIntent = new Intent();
-                    resultIntent.putExtra("result", result);
+                    resultIntent.putExtra("prodotto", prodotto);
                     setResult(RESULT_OK, resultIntent);
                     finish();
                 }
