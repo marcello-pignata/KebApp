@@ -35,11 +35,11 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
                 android:layout_marginTop="3dp"
+                android:fontFamily="@font/sf_bold"
                 android:text="Mario"
                 android:textColor="@color/black"
                 android:textSize="17dp"
                 android:textStyle="bold"
-                android:fontFamily="@font/alegreya_sc"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/textViewID"
                 app:layout_constraintHorizontal_bias="0.0"
@@ -52,14 +52,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="1dp"
-                android:fontFamily="@font/alegreya_sc_black"
+                android:fontFamily="@font/sf_black"
                 android:text="20:00"
                 android:textColor="@color/black"
                 android:textSize="19dp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/textViewID"
-                app:layout_constraintHorizontal_bias="0.186"
+                app:layout_constraintHorizontal_bias="0.152"
                 app:layout_constraintStart_toEndOf="@+id/textViewNomeOrdine"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.0" />
@@ -69,7 +69,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="21dp"
                 android:layout_marginTop="5dp"
-                android:fontFamily="@font/alegreya_sc"
+                android:fontFamily="@font/sf_medium"
                 android:text="N.15649"
                 android:textColor="@color/black"
                 android:textStyle="bold"
@@ -81,16 +81,18 @@
                 app:layout_constraintVertical_bias="0.0" />
 
             <TextView
+                android:clickable="true"
                 android:id="@+id/textViewIndirizzoOrdine"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
                 android:layout_marginTop="-1dp"
-                android:drawableRight="@drawable/baseline_content_copy_24"
-                android:fontFamily="@font/alegreya_sc_black"
+                android:drawableLeft="@drawable/baseline_content_copy_24"
+                android:fontFamily="@font/sf_black"
                 android:text="via San Paolo 24, Cernusco  "
                 android:textColor="@color/black"
                 android:textStyle="bold"
+                android:maxWidth="220dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/textViewApi"
                 app:layout_constraintHorizontal_bias="0.018"
@@ -113,7 +115,7 @@
                 app:layout_constraintVertical_bias="0.196" />
 
             <TextView
-                android:id="@+id/textView6"
+                android:id="@+id/textViewLinea1"
                 android:layout_width="match_parent"
                 android:layout_height="2dp"
                 android:background="@color/black"
@@ -124,6 +126,21 @@
                 app:layout_constraintTop_toBottomOf="@+id/textViewIndirizzoOrdine"
                 app:layout_constraintVertical_bias="0.032" />
 
+            <TextView
+                android:id="@+id/textViewPrezzo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="€15,50"
+                android:layout_marginLeft="2dp"
+                android:layout_marginBottom="2dp"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewIndirizzoOrdine"
+                app:layout_constraintVertical_bias="1.0" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
