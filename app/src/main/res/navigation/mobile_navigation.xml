@@ -12,6 +12,12 @@
         tools:layout="@layout/fragment_ordini" />
 
     <fragment
+        android:id="@+id/navigation_consegne"
+        android:name="com.example.kebapp.ui.consegne.ConsegneFragment"
+        android:label="Consegne"
+        tools:layout="@layout/fragment_consegne" />
+
+    <fragment
         android:id="@+id/navigation_aggiungi_ordine"
         android:name="com.example.kebapp.ui.aggiungi_ordine.AggiungiOrdineFragment"
         android:label="Aggiungi ordine"

@@ -29,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
         AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder
             (
                 R.id.navigation_ordini,
+                R.id.navigation_consegne,
                 R.id.navigation_aggiungi_ordine,
                 R.id.navigation_profilo
             )

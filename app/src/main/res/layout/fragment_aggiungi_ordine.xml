@@ -94,11 +94,54 @@
                     android:id="@+id/textInputNumero"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-                <LinearLayout
+            <TextView
+                android:id="@+id/textViewOrarioRichiesto"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Orario richiesto"
+                tools:layout_editor_absoluteX="16dp"
+                tools:layout_editor_absoluteY="134dp" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputLayoutOrarioRichiesto"
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                app:boxBackgroundColor="@android:color/transparent"
+                app:errorEnabled="true"
+                tools:layout_editor_absoluteX="16dp"
+                tools:layout_editor_absoluteY="38dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/textInputOrarioRichiesto"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal"></LinearLayout>
+                    android:layout_height="match_parent" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:id="@+id/textViewNote"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Note"
+                tools:layout_editor_absoluteX="16dp"
+                tools:layout_editor_absoluteY="134dp" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputLayoutNote"
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                app:boxBackgroundColor="@android:color/transparent"
+                app:errorEnabled="true"
+                tools:layout_editor_absoluteX="16dp"
+                tools:layout_editor_absoluteY="38dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/textInputNote"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <LinearLayout
