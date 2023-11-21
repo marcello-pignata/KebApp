@@ -124,6 +124,5 @@ public class OrdiniFragment extends Fragment
 
             cards.addView(newCard);
         }
-
     }
 }

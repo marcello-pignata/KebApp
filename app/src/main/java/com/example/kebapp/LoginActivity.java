@@ -1,7 +1,9 @@
 package com.example.kebapp;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityOptionsCompat;
 
+import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -35,8 +37,10 @@ public class LoginActivity extends AppCompatActivity
             textInputLayoutUsername.setError("username non valido");
             textInputLayoutPassword.setError("password errata");
             */
+
             Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-            LoginActivity.this.startActivity(intent);
+            startActivity(intent);
+            overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
             finish();
         });
     }
