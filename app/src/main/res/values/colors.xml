@@ -16,4 +16,5 @@
     <color name="yellow_in_consegna">#ffff00</color>
     <color name="orange_in_preparazione">#ff8000</color>
     <color name="red_cancellato">#ff0000</color>
+    <color name="gray">#7F7F7F</color>
 </resources>

@@ -55,7 +55,7 @@ public class AggiungiOrdineFragment extends Fragment
         listaProdotti.add(new Prodotto("Margherita", 5., 0, "Pomodoro, mozzarella"));
         listaProdotti.add(new Prodotto("Bufala", 6.5, 0, "Pomodoro, mozzarella di bufala"));
         listaProdotti.add(new Prodotto("Prosciutto e funghi", 7., 0, "Pomodoro, mozzarella, prosciutto cotto, funghi"));
-        listaProdotti.add(new Prodotto("Americana", 7.5, 0, "Pomodoro, mozzarella, wurstel, patatine"));
+        listaProdotti.add(new Prodotto("Americana", 7., 0, "Pomodoro, mozzarella, wurstel, patatine"));
 
         ActivityResultLauncher<Intent> launcher = registerForActivityResult
                 (
