@@ -1,26 +1,23 @@
 package com.example.kebapp.ui.aggiungi_ordine;
 
-import static android.app.Activity.RESULT_OK;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 
-import androidx.activity.result.ActivityResult;
-import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.kebapp.Ingrediente;
 import com.example.kebapp.Prodotto;
 import com.example.kebapp.R;
-import com.example.kebapp.SelezionaProdottoActivity;
 
 import java.util.ArrayList;
 
@@ -51,13 +48,32 @@ public class AggiungiOrdineFragment extends Fragment
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         RecyclerViewProdottiAdapter adapter = new RecyclerViewProdottiAdapter(getContext(), prodotti);
 
+        ActivityResultLauncher<Intent> aggiunteLauncher = registerForActivityResult
+                (
+                        new ActivityResultContracts.StartActivityForResult(),
+                        result ->
+                        {
+                            if (result.getResultCode() == Activity.RESULT_OK)
+                            {
+                                Intent data = result.getData();
+                                ArrayList<Ingrediente> listaAggiunte = (ArrayList<Ingrediente>) data.getSerializableExtra("listaAggiunte");
+                                int idProdotto = data.getIntExtra("idProdotto", -1);
+
+                                adapter.getItem(idProdotto).aggiunte = listaAggiunte;
+                                recyclerView.setAdapter(adapter);
+                            }
+                        }
+                );
+
+        adapter.addLauncher(aggiunteLauncher);
+
         listaProdotti.add(new Prodotto("Marinara", 4., 0, "Pomodoro"));
         listaProdotti.add(new Prodotto("Margherita", 5., 0, "Pomodoro, mozzarella"));
         listaProdotti.add(new Prodotto("Bufala", 6.5, 0, "Pomodoro, mozzarella di bufala"));
         listaProdotti.add(new Prodotto("Prosciutto e funghi", 7., 0, "Pomodoro, mozzarella, prosciutto cotto, funghi"));
         listaProdotti.add(new Prodotto("Americana", 7.5, 0, "Pomodoro, mozzarella, wurstel, patatine"));
 
-        ActivityResultLauncher<Intent> launcher = registerForActivityResult
+        ActivityResultLauncher<Intent> prodottoLauncher = registerForActivityResult
                 (
                     new ActivityResultContracts.StartActivityForResult(),
                         result ->
@@ -77,8 +93,7 @@ public class AggiungiOrdineFragment extends Fragment
         {
             Intent intent = new Intent(getActivity(), SelezionaProdottoActivity.class);
             intent.putExtra("listaProdotti", listaProdotti);
-            launcher.launch(intent);
-
+            prodottoLauncher.launch(intent);
         });
     }
 }

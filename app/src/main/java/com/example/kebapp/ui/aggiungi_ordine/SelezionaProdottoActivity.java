@@ -1,4 +1,4 @@
-package com.example.kebapp;
+package com.example.kebapp.ui.aggiungi_ordine;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
@@ -9,6 +9,9 @@ import android.util.Log;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.example.kebapp.Prodotto;
+import com.example.kebapp.R;
 
 import java.util.ArrayList;
 
@@ -36,13 +39,13 @@ public class SelezionaProdottoActivity extends AppCompatActivity {
             newCard = new CardView(getApplicationContext());
             getLayoutInflater().inflate(R.layout.card_prodotto, newCard);
 
-            newTextView = newCard.findViewById(R.id.textViewNomeProdotto);
+            newTextView = newCard.findViewById(R.id.textViewNomeIngrediente);
             newTextView.setText(listaProdotti.get(i).nome);
 
             newTextView = newCard.findViewById(R.id.textViewDescrizione);
             newTextView.setText(listaProdotti.get(i).descrizione);
 
-            newTextView = newCard.findViewById(R.id.textViewPrezzo);
+            newTextView = newCard.findViewById(R.id.textViewPrezzoIngrediente);
             newTextView.setText(listaProdotti.get(i).prezzo + "€");
 
             EditText editTextQuantita = newCard.findViewById(R.id.editTextQuantita);

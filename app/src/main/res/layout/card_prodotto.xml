@@ -13,7 +13,7 @@
         android:layout_height="match_parent">
 
         <TextView
-            android:id="@+id/textViewNomeProdotto"
+            android:id="@+id/textViewNomeIngrediente"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
@@ -37,7 +37,7 @@
             app:layout_constraintEnd_toEndOf="@+id/buttonDecQuantita"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textViewNomeProdotto"
+            app:layout_constraintTop_toBottomOf="@+id/textViewNomeIngrediente"
             app:layout_constraintVertical_bias="0.153" />
 
         <EditText
@@ -90,7 +90,7 @@
 
 
         <TextView
-            android:id="@+id/textViewPrezzo"
+            android:id="@+id/textViewPrezzoIngrediente"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -100,7 +100,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.035"
-            app:layout_constraintStart_toEndOf="@+id/textViewNomeProdotto"
+            app:layout_constraintStart_toEndOf="@+id/textViewNomeIngrediente"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.347" />
 
