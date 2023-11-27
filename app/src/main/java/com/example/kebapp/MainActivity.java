@@ -13,8 +13,6 @@ import androidx.navigation.ui.NavigationUI;
 
 import com.example.kebapp.databinding.ActivityMainBinding;
 
-import java.io.Serializable;
-
 public class MainActivity extends AppCompatActivity
 {
     private ActivityMainBinding binding;

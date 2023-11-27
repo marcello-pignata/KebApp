@@ -84,6 +84,13 @@ public class RecyclerViewProdottiAdapter extends RecyclerView.Adapter<RecyclerVi
             aggiunteLauncher.launch(intent);
 
         });
+
+        holder.buttonRimuoviProdotto.setOnClickListener(item ->
+        {
+            mData.remove(position);
+            notifyItemRemoved(position);
+            notifyItemRangeChanged(position, mData.size());
+        });
     }
 
     @Override
@@ -102,8 +109,8 @@ public class RecyclerViewProdottiAdapter extends RecyclerView.Adapter<RecyclerVi
     {
         TextView textViewNome;
         TextView textViewQuantita;
-
         Button buttonAggiungiIngredienti;
+        Button buttonRimuoviProdotto;
 
         ViewHolder(View itemView)
         {
@@ -111,6 +118,7 @@ public class RecyclerViewProdottiAdapter extends RecyclerView.Adapter<RecyclerVi
             textViewNome = itemView.findViewById(R.id.textViewNome);
             textViewQuantita = itemView.findViewById(R.id.textViewQuantita);
             buttonAggiungiIngredienti = itemView.findViewById(R.id.buttonAggiungiIngredienti);
+            buttonRimuoviProdotto = itemView.findViewById(R.id.buttonRimuoviProdotto);
             itemView.setOnClickListener(this);
         }
 
