@@ -7,6 +7,11 @@
         android:title="Ordini" />
 
     <item
+        android:id="@+id/navigation_consegne"
+        android:icon="@drawable/baseline_delivery_dining_24"
+        android:title="Consegne" />
+
+    <item
         android:id="@+id/navigation_aggiungi_ordine"
         android:icon="@drawable/baseline_post_add_24"
         android:title="Aggiungi ordine" />

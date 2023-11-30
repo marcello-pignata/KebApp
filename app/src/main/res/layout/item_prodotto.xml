@@ -9,10 +9,11 @@
 
     <TextView
         android:id="@+id/textViewNome"
+        android:inputType="textMultiLine"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="Nome"
+        android:text="Nome\n\t\t+ Aggiunta1\n\t\t+ Aggiunta2\n"
         android:layout_marginStart="30dp"
         />
 
@@ -25,10 +26,18 @@
         android:text="x1" />
 
     <Button
-        android:id="@+id/buttonModifica"
+        android:id="@+id/buttonAggiungiIngredienti"
         android:layout_width="45dp"
         android:layout_height="45dp"
         android:drawableLeft="@drawable/baseline_add_16"
+        android:background="@android:color/transparent"
+        />
+
+    <Button
+        android:id="@+id/buttonRimuoviProdotto"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:drawableLeft="@drawable/baseline_delete_16"
         android:background="@android:color/transparent"
         />
 </LinearLayout>

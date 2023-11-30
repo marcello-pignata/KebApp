@@ -4,4 +4,6 @@
     <string name="title_activity_login">LoginActivity</string>
     <string name="registrazione"><a href='http://google.com'>Non sei ancora registrato? Cliccla qui</a></string>
     <string name="recuperopass"><a href='http://google.com'>Password dimenticata?</a></string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
