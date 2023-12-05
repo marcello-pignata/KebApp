@@ -26,30 +26,31 @@ public class RecyclerViewProdottiAdapter extends RecyclerView.Adapter<RecyclerVi
 
     private List<Prodotto> mData;
     private LayoutInflater mInflater;
-
     private ItemClickListener mClickListener;
-    ActivityResultLauncher<Intent> aggiunteLauncher;
+    private ActivityResultLauncher<Intent> aggiunteLauncher;
+
+    // tag usato per debugging
     private final String TAG = "RecyclerViewProdottiAdapter";
 
-    ArrayList<Ingrediente> listaIngredienti = new ArrayList<>();
+    // lista di tutti gli ingredienti disponibili
+    private ArrayList<Ingrediente> listaIngredienti = new ArrayList<>();
 
-    RecyclerViewProdottiAdapter(Context context, List<Prodotto> data)
+    RecyclerViewProdottiAdapter(Context context)
     {
         this.mInflater = LayoutInflater.from(context);
-        this.mData = data;
-        this.aggiunteLauncher = aggiunteLauncher;
-
-        listaIngredienti.add(new Ingrediente("Doppio pomodoro", 1.));
-        listaIngredienti.add(new Ingrediente("Doppia mozzarella", 1.));
-        listaIngredienti.add(new Ingrediente("Mozzarella di bufala", 2.));
-        listaIngredienti.add(new Ingrediente("Patatine", 1.));
-        listaIngredienti.add(new Ingrediente("Salsiccia", 2.));
-        listaIngredienti.add(new Ingrediente("Rucola", 0.5));
+        this.mData = new ArrayList<>();
     }
 
+    // metodo usato per ottenere l'ActivityResultLauncher creato da AggiungiOrdineFragment
     public void addLauncher (ActivityResultLauncher<Intent> aggiunteLauncher)
     {
         this.aggiunteLauncher = aggiunteLauncher;
+    }
+
+    // metodo usato per ottenere l'elenco degli ingredienti scaricato da AggiungiOrdineFragment
+    public void addListaIngredienti (ArrayList<Ingrediente> listaIngredienti)
+    {
+        this.listaIngredienti = listaIngredienti;
     }
 
     @Override
@@ -59,34 +60,44 @@ public class RecyclerViewProdottiAdapter extends RecyclerView.Adapter<RecyclerVi
         return new ViewHolder(view);
     }
 
+    // aggiunta di un nuovo prodotto nella recycler view
     @Override
     public void onBindViewHolder(ViewHolder holder, int position)
     {
+        // ottengo il prodotto da aggiungere
         Prodotto prodotto = mData.get(position);
+
+        // imposto le textview per il nome e la quantità con i corrispettivi dati
         holder.textViewNome.setText(prodotto.nome);
         holder.textViewQuantita.setText("x" + prodotto.quantita);
 
+        // se sono presenti aggiunte le scrivo una per una nella textViewNome
         for (int i = 0; i < prodotto.aggiunte.size(); i++)
         {
             holder.textViewNome.setText(holder.textViewNome.getText() + "\n\t\t+ " + prodotto.aggiunte.get(i).nome);
         }
         holder.textViewNome.setText(holder.textViewNome.getText() + "\n");
 
+        // setOnClickListener del pulsante per l'aggiunta di ingredienti
         holder.buttonAggiungiIngredienti.setOnClickListener(item ->
         {
+            // faccio partire SelezionaIngredienteActivity passandogli:
+            //      - la lista delle aggiunte già presenti
+            //      - la lista di tutti gli ingredienti
+            //      - l'ID del prodotto che stiamo modificando
             Activity origin = (Activity)holder.itemView.getContext();
-
             Intent intent = new Intent(origin, SelezionaIngredientiActivity.class);
             intent.putExtra("listaAggiunte", prodotto.aggiunte);
             intent.putExtra("listaIngredienti", listaIngredienti);
             intent.putExtra("idProdotto", position);
-
             aggiunteLauncher.launch(intent);
 
         });
 
+        // setOnClickListener del pulsante per la rimozione del prodotto
         holder.buttonRimuoviProdotto.setOnClickListener(item ->
         {
+            // rimuovo il prodotto dall'ArrayList e dalla recycler view
             mData.remove(position);
             notifyItemRemoved(position);
             notifyItemRangeChanged(position, mData.size());
