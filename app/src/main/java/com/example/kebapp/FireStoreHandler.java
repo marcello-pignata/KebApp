@@ -6,11 +6,14 @@ import androidx.annotation.NonNull;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.Timestamp;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.Map;
 
 public class FireStoreHandler {
@@ -110,5 +113,38 @@ public class FireStoreHandler {
                 });
 
         return result;
+    }
+
+    public void putOrdine(Ordine ordine)
+    {
+        Map<String, Object> ordineMap = new HashMap<>();
+        ordineMap.put("indirizzo", ordine.indirizzo);
+        ordineMap.put("nome", ordine.nome);
+        ordineMap.put("note", ordine.note);
+        ordineMap.put("numero", ordine.numero);
+        ordineMap.put("orario_inserito", new Timestamp(new Date()));
+        ordineMap.put("orario_richiesto", ordine.orarioRichiesto);
+        ordineMap.put("status", 0);
+        ordineMap.put("totale", ordine.totale);
+
+        ArrayList<Map> prodottiList = new ArrayList<>();
+
+        Prodotto currentProdotto;
+        Map<String, Object> prodottoMap;
+        for (int i = 0; i < ordine.prodotti.size(); i++)
+        {
+            currentProdotto = ordine.prodotti.get(i);
+
+            prodottoMap = new HashMap<>();
+            prodottoMap.put("nome", currentProdotto.nome);
+            prodottoMap.put("quantita", currentProdotto.quantita);
+            prodottoMap.put("aggiunte", currentProdotto.getAggiunteString());
+
+            prodottiList.add(prodottoMap);
+        }
+
+        ordineMap.put("prodotti", prodottiList);
+
+        database.collection("ordini").add(ordineMap);
     }
 }

@@ -41,6 +41,30 @@ public class RecyclerViewProdottiAdapter extends RecyclerView.Adapter<RecyclerVi
         this.mData = new ArrayList<>();
     }
 
+    // metodo get per la lista di tutti i prodotti inseriti
+    public List<Prodotto> getmData()
+    {
+        return this.mData;
+    }
+
+    // metodo usato per calcolare il prezzo totale di tutti i prodotti con le relative aggiunte
+    public double getTotale()
+    {
+        double totale = 0;
+
+        for (int i = 0; i < mData.size(); i++)
+        {
+            totale += mData.get(i).prezzo * mData.get(i).quantita;
+
+            for (int j = 0; j < mData.get(i).aggiunte.size(); j++)
+            {
+                totale += mData.get(i).aggiunte.get(j).prezzo * mData.get(i).quantita;
+            }
+        }
+
+        return totale;
+    }
+
     // metodo usato per ottenere l'ActivityResultLauncher creato da AggiungiOrdineFragment
     public void addLauncher (ActivityResultLauncher<Intent> aggiunteLauncher)
     {

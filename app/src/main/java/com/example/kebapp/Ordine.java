@@ -4,34 +4,59 @@ import java.util.ArrayList;
 
 public class Ordine
 {
-    public enum Status
-    {
-        CANCELLATO,
-        IN_PREPARAZIONE,
-        IN_CONSEGNA,
-        CONSEGNATO
-    }
+    public Ordine() {}
 
     public int ID;
     public String nome;
     public String indirizzo;
     public String orarioRichiesto;
-    public String orarioInvio;
+    public String orarioInserito;
+    public String note;
+    public String numero;
     public ArrayList<Prodotto> prodotti;
     public double totale;
-    public boolean pagato;
-    public Status status;
+    public int status;
 
-    public Ordine( int ID, String nome, String indirizzo, String orarioRichiesto, String orarioInvio, ArrayList<Prodotto> prodotti, double totale, boolean pagato, Status status)
+    public Ordine(
+            int ID,
+            String nome,
+            String indirizzo,
+            String orarioRichiesto,
+            String orarioInserito,
+            String note,
+            String numero,
+            ArrayList<Prodotto> prodotti,
+            double totale,
+            int status)
     {
         this.ID = ID;
         this.nome = nome;
         this.indirizzo = indirizzo;
         this.orarioRichiesto = orarioRichiesto;
-        this.orarioInvio = orarioInvio;
+        this.orarioInserito = orarioInserito;
+        this.note = note;
+        this.numero = numero;
         this.prodotti = prodotti;
         this.totale = totale;
-        this.pagato = pagato;
         this.status = status;
+    }
+
+    public Ordine(
+            String nome,
+            String indirizzo,
+            String orarioRichiesto,
+            String note,
+            String numero,
+            ArrayList<Prodotto> prodotti,
+            double totale
+    )
+    {
+        this.nome = nome;
+        this.indirizzo = indirizzo;
+        this.orarioRichiesto = orarioRichiesto;
+        this.note = note;
+        this.numero = numero;
+        this.prodotti = prodotti;
+        this.totale = totale;
     }
 }

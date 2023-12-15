@@ -30,9 +30,6 @@ public class ProfiloFragment extends Fragment
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState)
     {
-        getView().findViewById(R.id.buttonProfilo).setOnClickListener(item ->
-        {
-            Log.d(TAG, "click");
-        });
+
     }
 }

@@ -19,4 +19,16 @@ public class Prodotto implements Serializable {
         this.descrizione = descrizione;
         aggiunte = new ArrayList<Ingrediente>();
     }
+
+    public ArrayList<String> getAggiunteString()
+    {
+        ArrayList<String> list = new ArrayList<>();
+
+        for (int i = 0; i < aggiunte.size(); i++)
+        {
+            list.add(aggiunte.get(i).nome);
+        }
+
+        return list;
+    }
 }

@@ -177,9 +177,9 @@
                 android:id="@+id/textViewTotale"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:text="0.00€"
                 android:textSize="25dp"
-                android:textStyle="bold"
-                android:text="TOTALE = 0.00€" />
+                android:textStyle="bold" />
 
             <Button
                 android:id="@+id/buttonAggiungiOrdine"

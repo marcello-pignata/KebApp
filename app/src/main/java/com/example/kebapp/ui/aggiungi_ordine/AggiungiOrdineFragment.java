@@ -14,9 +14,12 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
+import android.widget.TextView;
 
 import com.example.kebapp.FireStoreHandler;
 import com.example.kebapp.Ingrediente;
+import com.example.kebapp.Ordine;
 import com.example.kebapp.Prodotto;
 import com.example.kebapp.R;
 
@@ -58,6 +61,15 @@ public class AggiungiOrdineFragment extends Fragment
         // download elenco ingredienti
         adapter.addListaIngredienti(database.getIngredienti());
 
+        // observer che viene eseguito quando viene chiamato notifyItemRangeChanged dall'adapter
+        adapter.registerAdapterDataObserver(new RecyclerView.AdapterDataObserver() {
+            @Override
+            public void onItemRangeChanged(int positionStart, int itemCount)
+            {
+                ((TextView)getView().findViewById(R.id.textViewTotale)).setText(String.valueOf(adapter.getTotale()) + '€');
+            }
+        });
+
         // inizializzazione launcher per SelezionaIngredientiActivity
         ActivityResultLauncher<Intent> aggiunteLauncher = registerForActivityResult
                 (
@@ -74,6 +86,7 @@ public class AggiungiOrdineFragment extends Fragment
                                 // aggiunta dati ricevuti alla recycler view
                                 adapter.getItem(idProdotto).aggiunte = listaAggiunte;
                                 recyclerView.setAdapter(adapter);
+                                ((TextView)getView().findViewById(R.id.textViewTotale)).setText(String.valueOf(adapter.getTotale()) + '€');
                             }
                         }
                 );
@@ -94,6 +107,7 @@ public class AggiungiOrdineFragment extends Fragment
                                 // aggiunta dati ricevuti alla recycler view
                                 adapter.addItem(prodotto);
                                 recyclerView.setAdapter(adapter);
+                                ((TextView)getView().findViewById(R.id.textViewTotale)).setText(String.valueOf(adapter.getTotale()) + '€');
                             }
                         }
                 );
@@ -106,6 +120,21 @@ public class AggiungiOrdineFragment extends Fragment
             Intent intent = new Intent(getActivity(), SelezionaProdottoActivity.class);
             intent.putExtra("listaProdotti", listaProdotti);
             prodottoLauncher.launch(intent);
+        });
+
+        // onClickListener del pulsante per l'invio dell'ordine
+        getView().findViewById(R.id.buttonAggiungiOrdine).setOnClickListener(item ->
+        {
+            Ordine ordine = new Ordine(
+                    ((EditText)getView().findViewById(R.id.textInputNome)).getText().toString(),
+                    ((EditText)getView().findViewById(R.id.textInputIndirizzo)).getText().toString(),
+                    ((EditText)getView().findViewById(R.id.textInputOrarioRichiesto)).getText().toString(),
+                    ((EditText)getView().findViewById(R.id.textInputNote)).getText().toString(),
+                    ((EditText)getView().findViewById(R.id.textInputNumero)).getText().toString(),
+                    (ArrayList<Prodotto>) adapter.getmData(),
+                    adapter.getTotale()
+            );
+            database.putOrdine(ordine);
         });
     }
 }

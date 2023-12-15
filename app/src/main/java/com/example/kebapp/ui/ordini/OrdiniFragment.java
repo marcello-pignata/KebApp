@@ -41,47 +41,6 @@ public class OrdiniFragment extends Fragment
 
         ArrayList<Ordine> ordini = new ArrayList<Ordine>();
 
-        ordini.add(new Ordine(
-                1,
-                "Devis",
-                "via delle Robinie 15, Seveso (MB)",
-                "20:00",
-                "18:47",
-                new ArrayList<Prodotto>(),
-                23.5,
-                false,
-                Ordine.Status.CONSEGNATO));
-        ordini.add(new Ordine(
-                2,
-                "Marcello",
-                "via Venezia 13, Meda (MB)",
-                "19:30",
-                "18:12",
-                new ArrayList<Prodotto>(),
-                12.,
-                true,
-                Ordine.Status.CANCELLATO));
-        ordini.add(new Ordine(
-                3,
-                "Riccardo",
-                "via XXV Aprile 7, Cesano Maderno (MB)",
-                "ASAP",
-                "19:38",
-                new ArrayList<Prodotto>(),
-                14.5,
-                true,
-                Ordine.Status.IN_PREPARAZIONE));
-        ordini.add(new Ordine(
-                4,
-                "Marco",
-                "via Marco Polo 93, Meda (MB)",
-                "20:30",
-                "18:24",
-                new ArrayList<Prodotto>(),
-                47.5,
-                false,
-                Ordine.Status.IN_CONSEGNA));
-
         LinearLayout cards = getView().findViewById(R.id.cards);
         CardView newCard;
         TextView newTextView;
@@ -108,16 +67,16 @@ public class OrdiniFragment extends Fragment
             newTextView = newCard.findViewById(R.id.textViewColoreStatus);
             switch(ordini.get(i).status)
             {
-                case CONSEGNATO:
+                case 2:
                     newTextView.setBackground(AppCompatResources.getDrawable(getContext(), R.drawable.status_consegnato));
                     break;
-                case IN_CONSEGNA:
+                case 1:
                     newTextView.setBackground(AppCompatResources.getDrawable(getContext(), R.drawable.status_in_consegna));
                     break;
-                case IN_PREPARAZIONE:
+                case 0:
                     newTextView.setBackground(AppCompatResources.getDrawable(getContext(), R.drawable.status_in_preparazione));
                     break;
-                case CANCELLATO:
+                case -1:
                     newTextView.setBackground(AppCompatResources.getDrawable(getContext(), R.drawable.status_cancellato));
                     break;
             }
