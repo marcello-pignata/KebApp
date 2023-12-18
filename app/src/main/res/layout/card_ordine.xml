@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="140dp"
+    android:layout_height="wrap_content"
     android:layout_margin="20dp"
     app:cardCornerRadius="20dp"
     app:cardElevation="10dp">
@@ -14,9 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal"
-        android:background="@drawable/round_corners_card"
-        android:clickable="true"
-        android:onClick="cardLayout">
+        android:background="@drawable/round_corners_card">
 
 
         <TextView
@@ -24,6 +22,7 @@
             android:layout_width="40dp"
             android:layout_height="match_parent"
             android:background="@drawable/status_consegnato" />
+
         <TextView
             android:layout_width="2dp"
             android:layout_height="match_parent"
@@ -45,7 +44,7 @@
                 android:textSize="17dp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/textViewID"
+                app:layout_constraintEnd_toStartOf="@+id/textViewTotale"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -62,19 +61,19 @@
                 android:textSize="19dp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/textViewID"
+                app:layout_constraintEnd_toStartOf="@+id/textViewTotale"
                 app:layout_constraintHorizontal_bias="0.152"
                 app:layout_constraintStart_toEndOf="@+id/textViewNomeOrdine"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.0" />
 
             <TextView
-                android:id="@+id/textViewID"
+                android:id="@+id/textViewTotale"
                 android:layout_width="wrap_content"
                 android:layout_height="21dp"
                 android:layout_marginTop="5dp"
                 android:fontFamily="@font/sf_medium"
-                android:text="N.15649"
+                android:text="28€"
                 android:textColor="@color/black"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -114,7 +113,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.977"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textViewID"
+                app:layout_constraintTop_toBottomOf="@+id/textViewTotale"
                 app:layout_constraintVertical_bias="0.196" />
 
             <TextView
@@ -130,20 +129,17 @@
                 app:layout_constraintVertical_bias="0.032" />
 
             <TextView
-                android:id="@+id/textViewPrezzoProdotto"
+                android:id="@+id/textViewProdotti"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="€15,50"
-                android:layout_marginLeft="2dp"
-                android:layout_marginBottom="2dp"
-                android:textColor="@color/black"
-                android:textStyle="bold"
+                android:layout_marginStart="4dp"
+                android:text="1 Margherita\n\t\t\t+ patatine"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textViewIndirizzoOrdine"
-                app:layout_constraintVertical_bias="1.0" />
+                app:layout_constraintTop_toBottomOf="@+id/textViewLinea1"
+                app:layout_constraintVertical_bias="0.0" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

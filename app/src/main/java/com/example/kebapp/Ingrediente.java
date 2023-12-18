@@ -13,4 +13,10 @@ public class Ingrediente  implements Serializable
         this.nome = nome;
         this.prezzo = prezzo;
     }
+
+    public Ingrediente(String nome)
+    {
+        this.nome = nome;
+        this.prezzo = 0;
+    }
 }

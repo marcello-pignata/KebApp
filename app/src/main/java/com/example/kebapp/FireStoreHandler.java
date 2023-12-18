@@ -6,6 +6,7 @@ import androidx.annotation.NonNull;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.gms.tasks.Tasks;
 import com.google.firebase.Timestamp;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
@@ -15,6 +16,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ExecutionException;
 
 public class FireStoreHandler {
     private final String TAG = "FireStoreHandler";
@@ -56,7 +58,7 @@ public class FireStoreHandler {
                                 prezzo = (double)data.get("prezzo");
                             }
 
-
+                            Log.d(TAG, "AGGIUNTO NUOVO PRODOTTO");
                             result.add(new Prodotto(nome,prezzo,0,descrizione));
                         }
                     }
@@ -67,6 +69,7 @@ public class FireStoreHandler {
                 }
             });
 
+        Log.d(TAG, "RITORNO RESULT = " + result.size());
         return result;
     }
 
@@ -112,6 +115,85 @@ public class FireStoreHandler {
                     }
                 });
 
+        return result;
+    }
+
+    public ArrayList<Ordine> getOrdini()
+    {
+        ArrayList<Ordine> result = new ArrayList<>();
+
+        Task<QuerySnapshot> task = database.collection("ordini").get().addOnCompleteListener(
+                new OnCompleteListener<QuerySnapshot>()
+                {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task)
+                    {
+                        Map<String, Object> data;
+
+                        int status;
+                        double totale;
+                        String nome, indirizzo, orarioRichiesto, orarioInserito, note, numero;
+                        ArrayList<Prodotto> prodotti;
+
+                        ArrayList<Map<String, Object>> prodottiArray;
+
+                        String nomeProdotto;
+                        int quantitaProdotto;
+                        ArrayList<String> aggiunteProdottoString;
+
+
+                        if (task.isSuccessful())
+                        {
+                            for (QueryDocumentSnapshot document : task.getResult())
+                            {
+                                data = document.getData();
+
+                                status = (int)(long)data.get("status");
+
+                                indirizzo = (String)data.get("indirizzo");
+                                nome = (String)data.get("nome");
+                                note = (String)data.get("note");
+                                numero = (String)data.get("numero");
+                                orarioRichiesto = (String)data.get("orario_richiesto");
+                                orarioInserito = ((Timestamp)data.get("orario_inserito")).toString();
+
+                                try
+                                {
+                                    totale = new Double((long)data.get("totale"));
+                                }
+                                catch (Exception e)
+                                {
+                                    totale = (double)data.get("totale");
+                                }
+
+                                prodotti = new ArrayList<>();
+                                prodottiArray = (ArrayList<Map<String, Object>>)data.get("prodotti");
+
+                                for (int i = 0; i < prodottiArray.size(); i++)
+                                {
+                                    nomeProdotto = (String)prodottiArray.get(i).get("nome");
+                                    quantitaProdotto = (int)(long)prodottiArray.get(i).get("quantita");
+                                    aggiunteProdottoString = (ArrayList<String>)prodottiArray.get(i).get("aggiunte");
+
+                                    prodotti.add(new Prodotto(nomeProdotto, quantitaProdotto, aggiunteProdottoString));
+                                }
+
+                                Log.d(TAG, "AGGIUNTO ORDINE A RESULT");
+                                result.add(new Ordine(nome, indirizzo, orarioRichiesto, orarioInserito, note, numero, prodotti, totale, status));
+                            }
+                        }
+                        else
+                        {
+                            Log.w(TAG, "Error getting documents.", task.getException());
+                        }
+                    }
+                });
+
+        //Tasks.await(task);
+
+        //wait(1000);
+
+        Log.d(TAG, "result.size() = " + result.size());
         return result;
     }
 

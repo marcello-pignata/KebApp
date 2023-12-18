@@ -1,12 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/constraintLayoutOrdini"
+    android:id="@+id/LinearLayoutOrdini"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.ordini.OrdiniFragment" >
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="right"
+        android:padding="10dp">
+
+        <Button
+            android:id="@+id/buttonAggiorna"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Aggiorna" />
+
+    </LinearLayout>
 
     <ScrollView
         android:id="@+id/scrollViewOrdini"

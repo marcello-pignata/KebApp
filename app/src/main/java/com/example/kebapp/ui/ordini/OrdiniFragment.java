@@ -12,8 +12,8 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.example.kebapp.FireStoreHandler;
 import com.example.kebapp.Ordine;
-import com.example.kebapp.Prodotto;
 import com.example.kebapp.R;
 
 import java.util.ArrayList;
@@ -37,51 +37,68 @@ public class OrdiniFragment extends Fragment
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState)
     {
-        //String[] ordini = {"Ordine 1", "Ordine 2", "Ordine 3", "Ordine 4", "Ordine 5"};
+        FireStoreHandler database = new FireStoreHandler();
+        ArrayList<Ordine> ordini = database.getOrdini();
 
-        ArrayList<Ordine> ordini = new ArrayList<Ordine>();
-
-        LinearLayout cards = getView().findViewById(R.id.cards);
-        CardView newCard;
-        TextView newTextView;
-
-
-        for (int i=0; i < ordini.size(); i++)
+        getView().findViewById(R.id.buttonAggiorna).setOnClickListener(item ->
         {
-            newCard = new CardView(getContext());
-            getLayoutInflater().inflate(R.layout.card_ordine, newCard);
+            LinearLayout cards = getView().findViewById(R.id.cards);
+            cards.removeAllViews();
 
-            newTextView = newCard.findViewById(R.id.textViewNomeOrdine);
-            newTextView.setText(ordini.get(i).nome);
+            CardView newCard;
+            TextView newTextView;
 
-            newTextView = newCard.findViewById(R.id.textViewOrarioRichiesto);
-            newTextView.setText(ordini.get(i).orarioRichiesto);
-
-
-            newTextView = newCard.findViewById(R.id.textViewID);
-            newTextView.setText('#' + String.valueOf(ordini.get(i).ID));
-
-            newTextView = newCard.findViewById(R.id.textViewIndirizzoOrdine);
-            newTextView.setText(ordini.get(i).indirizzo);
-
-            newTextView = newCard.findViewById(R.id.textViewColoreStatus);
-            switch(ordini.get(i).status)
+            for (int i=0; i < ordini.size(); i++)
             {
-                case 2:
-                    newTextView.setBackground(AppCompatResources.getDrawable(getContext(), R.drawable.status_consegnato));
-                    break;
-                case 1:
-                    newTextView.setBackground(AppCompatResources.getDrawable(getContext(), R.drawable.status_in_consegna));
-                    break;
-                case 0:
-                    newTextView.setBackground(AppCompatResources.getDrawable(getContext(), R.drawable.status_in_preparazione));
-                    break;
-                case -1:
-                    newTextView.setBackground(AppCompatResources.getDrawable(getContext(), R.drawable.status_cancellato));
-                    break;
-            }
+                newCard = new CardView(getContext());
+                getLayoutInflater().inflate(R.layout.card_ordine, newCard);
 
-            cards.addView(newCard);
-        }
+                newTextView = newCard.findViewById(R.id.textViewNomeOrdine);
+                newTextView.setText(ordini.get(i).nome);
+
+                newTextView = newCard.findViewById(R.id.textViewOrarioRichiesto);
+                newTextView.setText(ordini.get(i).orarioRichiesto);
+
+                newTextView = newCard.findViewById(R.id.textViewIndirizzoOrdine);
+                newTextView.setText(ordini.get(i).indirizzo);
+
+                newTextView = newCard.findViewById(R.id.textViewTotale);
+                newTextView.setText(String.valueOf(ordini.get(i).totale) + '€');
+
+                newTextView = newCard.findViewById(R.id.textViewProdotti);
+                String newText = "";
+                for (int j = 0; j < ordini.get(i).prodotti.size(); j++)
+                {
+                    newText += ordini.get(i).prodotti.get(j).quantita + " " + ordini.get(i).prodotti.get(j).nome;
+
+                    for (int k = 0; k < ordini.get(i).prodotti.get(j).aggiunte.size(); k++)
+                    {
+                        newText += "\n\t\t+ " + ordini.get(i).prodotti.get(j).aggiunte.get(k).nome;
+                    }
+
+
+                    newText += '\n';
+                }
+                newTextView.setText(newText);
+
+                newTextView = newCard.findViewById(R.id.textViewColoreStatus);
+                switch(ordini.get(i).status)
+                {
+                    case 2:
+                        newTextView.setBackground(AppCompatResources.getDrawable(getContext(), R.drawable.status_consegnato));
+                        break;
+                    case 1:
+                        newTextView.setBackground(AppCompatResources.getDrawable(getContext(), R.drawable.status_in_consegna));
+                        break;
+                    case 0:
+                        newTextView.setBackground(AppCompatResources.getDrawable(getContext(), R.drawable.status_in_preparazione));
+                        break;
+                }
+
+                cards.addView(newCard);
+            }
+        });
+
+
     }
 }
