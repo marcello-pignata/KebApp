@@ -56,9 +56,7 @@ public class AggiungiOrdineFragment extends Fragment
         FireStoreHandler database = new FireStoreHandler();
 
         // download elenco prodotti
-        Log.d(TAG, "CHIAMO GETPRODOTTI()");
         ArrayList<Prodotto> listaProdotti = database.getProdotti();
-        Log.d(TAG, "1° listaProdotti.size() = " + listaProdotti.size());
 
         // download elenco ingredienti
         adapter.addListaIngredienti(database.getIngredienti());
@@ -118,8 +116,6 @@ public class AggiungiOrdineFragment extends Fragment
         // onClickListener del pulsante per l'aggiunta di un prodotto
         getView().findViewById(R.id.buttonAggiungiProdotto).setOnClickListener(item ->
         {
-            Log.d(TAG, "2° listaProdotti.size() = " + listaProdotti.size());
-
             // faccio partire SelezionaProdottoActivity passandogli l'elenco dei prodotti
             Intent intent = new Intent(getActivity(), SelezionaProdottoActivity.class);
             intent.putExtra("listaProdotti", listaProdotti);

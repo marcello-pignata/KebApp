@@ -34,8 +34,6 @@ public class LoginActivity extends AppCompatActivity
             String username = textInputLayoutUsername.getEditText().getText().toString();
             String password = textInputLayoutPassword.getEditText().getText().toString();
 
-            Log.d(TAG, "Login: {" + username + ", " + password + "}");
-
             /*
             textInputLayoutUsername.setError("username non valido");
             textInputLayoutPassword.setError("password errata");
