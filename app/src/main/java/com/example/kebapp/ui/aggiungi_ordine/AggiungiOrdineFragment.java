@@ -16,6 +16,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.kebapp.FireStoreHandler;
 import com.example.kebapp.Ingrediente;
@@ -135,6 +136,15 @@ public class AggiungiOrdineFragment extends Fragment
                     adapter.getTotale()
             );
             database.putOrdine(ordine);
+
+            ((EditText)getView().findViewById(R.id.textInputNome)).setText("");
+            ((EditText)getView().findViewById(R.id.textInputIndirizzo)).setText("");
+            ((EditText)getView().findViewById(R.id.textInputOrarioRichiesto)).setText("");
+            ((EditText)getView().findViewById(R.id.textInputNote)).setText("");
+            ((EditText)getView().findViewById(R.id.textInputNumero)).setText("");
+            adapter.clear();
+
+            Toast.makeText(getContext(), "Ordine inserito con successo", Toast.LENGTH_LONG).show();
         });
     }
 }

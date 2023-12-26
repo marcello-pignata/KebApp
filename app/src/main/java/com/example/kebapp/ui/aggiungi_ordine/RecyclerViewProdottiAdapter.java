@@ -65,6 +65,13 @@ public class RecyclerViewProdottiAdapter extends RecyclerView.Adapter<RecyclerVi
         return totale;
     }
 
+    public void clear()
+    {
+        int size = mData.size();
+        mData.clear();
+        notifyItemRangeChanged(0, size);
+    }
+
     // metodo usato per ottenere l'ActivityResultLauncher creato da AggiungiOrdineFragment
     public void addLauncher (ActivityResultLauncher<Intent> aggiunteLauncher)
     {

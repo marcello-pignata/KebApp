@@ -52,7 +52,11 @@ public class OrdiniFragment extends Fragment
                 public void run() {
                     gifLoading.setVisibility(View.GONE);
                     buttonAggiorna.setVisibility(View.VISIBLE);
-                    RefreshOrdini(updater.updatedOrdini);
+                    try
+                    {
+                        RefreshOrdini(updater.updatedOrdini);
+                    }
+                    catch(Exception e){}
                 }
             }, updater.REFRESH_RATE+500);
         }
