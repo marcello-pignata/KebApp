@@ -6,12 +6,14 @@ import androidx.appcompat.content.res.AppCompatResources;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
-import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.PopupWindow;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.kebapp.MainActivity;
 import com.example.kebapp.Ordine;
@@ -84,6 +86,7 @@ public class OrdiniFragment extends Fragment
 
         for (int i=0; i < ordini.size(); i++)
         {
+            final String ID = ordini.get(i).ID;
             newCard = new CardView(getContext());
             getLayoutInflater().inflate(R.layout.card_ordine, newCard);
 
@@ -127,6 +130,82 @@ public class OrdiniFragment extends Fragment
                     newTextView.setBackground(AppCompatResources.getDrawable(getContext(), R.drawable.status_in_preparazione));
                     break;
             }
+
+            newCard.setOnClickListener(item ->
+                {
+                    View popupViewMain = getLayoutInflater().inflate(R.layout.card_ordine_popup_main, null);
+                    PopupWindow popupWindowMain = new PopupWindow(popupViewMain, -2, -2, true);
+
+                    popupViewMain.findViewById(R.id.buttonImpostaStato).setOnClickListener(lambda1 ->
+                    {
+                        View popupViewStato = getLayoutInflater().inflate(R.layout.card_ordine_popup_imposta_stato, null);
+                        PopupWindow popupWindowStato = new PopupWindow(popupViewStato, -2, -2, true);
+
+                        popupViewStato.findViewById(R.id.buttonInPreparazione).setOnClickListener(lambda2 ->
+                        {
+                            updater.impostaStatoOrdine(ID, 0);
+                            popupWindowStato.dismiss();
+                            popupWindowMain.dismiss();
+                            Toast.makeText(getContext(), "Stato impostato, aggiorna la pagina per visualizzare le modfiche", Toast.LENGTH_LONG).show();
+                        });
+
+                        popupViewStato.findViewById(R.id.buttonInConsegna).setOnClickListener(lambda3 ->
+                        {
+                            updater.impostaStatoOrdine(ID, 1);
+                            // TODO seleziona fattorino
+
+                            popupWindowStato.dismiss();
+                            popupWindowMain.dismiss();
+                            Toast.makeText(getContext(), "Stato impostato, aggiorna la pagina per visualizzare le modfiche", Toast.LENGTH_LONG).show();
+                        });
+
+                        popupViewStato.findViewById(R.id.buttonConsegnato).setOnClickListener(lambda4 ->
+                        {
+                            updater.impostaStatoOrdine(ID, 2);
+                            popupWindowStato.dismiss();
+                            popupWindowMain.dismiss();
+                            Toast.makeText(getContext(), "Stato impostato, aggiorna la pagina per visualizzare le modfiche", Toast.LENGTH_LONG).show();
+                        });
+                        popupWindowStato.showAtLocation(new View(getContext()), Gravity.CENTER, 0, 0);
+                    });
+
+                    popupViewMain.findViewById(R.id.buttonAssegnaFattorino).setOnClickListener(lambda5 ->
+                    {
+                        //TODO assegna a fattorino su Firebase
+                    });
+
+                    popupViewMain.findViewById(R.id.buttonElimina).setOnClickListener(lambda6 ->
+                    {
+                        View popupViewElimina = getLayoutInflater().inflate(R.layout.card_ordine_popup_elimina, null);
+                        PopupWindow popupWindowElimina = new PopupWindow(popupViewElimina, -2, -2, true);
+
+                        popupViewElimina.findViewById(R.id.buttonSi).setOnClickListener(lambda2 ->
+                        {
+                            updater.eliminaOrdine(ID);
+                            popupWindowElimina.dismiss();
+                            popupWindowMain.dismiss();
+                            Toast.makeText(getContext(), "Ordine eliminato, aggiorna la pagina per visualizzare le modfiche", Toast.LENGTH_LONG).show();
+                        });
+
+                        popupViewElimina.findViewById(R.id.buttonNo).setOnClickListener(lambda3 ->
+                        {
+                            popupWindowElimina.dismiss();
+                        });
+
+                        popupWindowElimina.showAtLocation(new View(getContext()), Gravity.CENTER, 0, 0);
+                    });
+
+                    popupWindowMain.showAtLocation(new View(getContext()), Gravity.CENTER, 0, 0);
+                    getActivity().findViewById(R.id.greyout).setVisibility(View.VISIBLE);
+                    popupWindowMain.setOnDismissListener(new PopupWindow.OnDismissListener()
+                    {
+                        @Override
+                        public void onDismiss()
+                        {
+                            getActivity().findViewById(R.id.greyout).setVisibility(View.INVISIBLE);
+                        }
+                    });
+                });
 
             layout.addView(newCard);
         }

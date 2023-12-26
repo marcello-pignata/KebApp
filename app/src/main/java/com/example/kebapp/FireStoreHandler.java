@@ -129,7 +129,7 @@ public class FireStoreHandler {
 
                     int status;
                     double totale;
-                    String nome, indirizzo, orarioRichiesto, orarioInserito, note, numero;
+                    String ID, nome, indirizzo, orarioRichiesto, orarioInserito, note, numero;
                     ArrayList<Prodotto> prodotti;
 
                     ArrayList<Map<String, Object>> prodottiArray;
@@ -144,9 +144,9 @@ public class FireStoreHandler {
                         for (QueryDocumentSnapshot document : task.getResult())
                         {
                             data = document.getData();
+                            ID = document.getId();
 
                             status = (int)(long)data.get("status");
-
                             indirizzo = (String)data.get("indirizzo");
                             nome = (String)data.get("nome");
                             note = (String)data.get("note");
@@ -175,7 +175,7 @@ public class FireStoreHandler {
                                 prodotti.add(new Prodotto(nomeProdotto, quantitaProdotto, aggiunteProdottoString));
                             }
 
-                            result.add(new Ordine(nome, indirizzo, orarioRichiesto, orarioInserito, note, numero, prodotti, totale, status));
+                            result.add(new Ordine(ID, nome, indirizzo, orarioRichiesto, orarioInserito, note, numero, prodotti, totale, status));
                         }
                     }
                     else
@@ -219,5 +219,15 @@ public class FireStoreHandler {
         ordineMap.put("prodotti", prodottiList);
 
         database.collection("ordini").add(ordineMap);
+    }
+
+    public void deleteOrdine(String ID)
+    {
+        database.collection("ordini").document(ID).delete();
+    }
+
+    public void setOrdineStatus(String ID, int status)
+    {
+        database.collection("ordini").document(ID).update("status", status);
     }
 }

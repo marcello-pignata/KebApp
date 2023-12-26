@@ -10,18 +10,18 @@ public class OrdiniUpdaterThread extends Thread
     private static final String TAG = "OrdiniUpdaterThread";
     public static final int REFRESH_RATE = 3000;
 
+    private FireStoreHandler database;
+
     ArrayList<Ordine> updatedOrdini;
 
     OrdiniUpdaterThread()
     {
         updatedOrdini = new ArrayList<>();
+        database = new FireStoreHandler();
     }
     @Override
     synchronized public void run()
     {
-
-        FireStoreHandler database = new FireStoreHandler();
-
         while(true)
         {
             try
@@ -34,5 +34,15 @@ public class OrdiniUpdaterThread extends Thread
                 throw new RuntimeException();
             }
         }
+    }
+
+    public void eliminaOrdine(String ID)
+    {
+        database.deleteOrdine(ID);
+    }
+
+    public void impostaStatoOrdine(String ID, int status)
+    {
+        database.setOrdineStatus(ID, status);
     }
 }

@@ -6,7 +6,7 @@ public class Ordine
 {
     public Ordine() {}
 
-    //public int ID;
+    public String ID;
 
     public String nome;
     public String indirizzo;
@@ -19,7 +19,7 @@ public class Ordine
     public int status;
 
     public Ordine(
-            //int ID,
+            String ID,
             String nome,
             String indirizzo,
             String orarioRichiesto,
@@ -30,7 +30,7 @@ public class Ordine
             double totale,
             int status)
     {
-        //this.ID = ID;
+        this.ID = ID;
         this.nome = nome;
         this.indirizzo = indirizzo;
         this.orarioRichiesto = orarioRichiesto;
