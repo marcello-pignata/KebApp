@@ -101,7 +101,7 @@ public class SelezionaProdottoActivity extends AppCompatActivity
             });
 
             // aggiungo la nuova card al layout
-            ((LinearLayout)findViewById(R.id.cards)).addView(newCard);
+            ((LinearLayout)findViewById(R.id.linearLayoutOrdini)).addView(newCard);
         }
     }
 }

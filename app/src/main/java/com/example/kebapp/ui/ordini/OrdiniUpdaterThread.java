@@ -11,7 +11,6 @@ public class OrdiniUpdaterThread extends Thread
     public static final int REFRESH_RATE = 3000;
 
     private FireStoreController database;
-
     ArrayList<Ordine> updatedOrdini;
 
     OrdiniUpdaterThread()
@@ -29,10 +28,7 @@ public class OrdiniUpdaterThread extends Thread
                 wait(REFRESH_RATE);
                 updatedOrdini = database.getOrdini();
             }
-            catch (Exception e)
-            {
-                throw new RuntimeException();
-            }
+            catch (Exception e){}
         }
     }
 
@@ -44,5 +40,10 @@ public class OrdiniUpdaterThread extends Thread
     public void impostaStatoOrdine(String ID, int status)
     {
         database.setOrdineStatus(ID, status);
+    }
+
+    public void impostaFattorinoOrdine(String ID, String UserID)
+    {
+        database.setFattorinoOrdine(ID, UserID);
     }
 }

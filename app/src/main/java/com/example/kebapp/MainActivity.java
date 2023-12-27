@@ -8,7 +8,6 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
-import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import com.example.kebapp.databinding.ActivityMainBinding;
@@ -22,7 +21,9 @@ public class MainActivity extends AppCompatActivity
     private final String TAG = "MainActivity";
     public boolean coldStart;
     public FirebaseAuth authenticator;
-    public ArrayList<Utente> user;
+    public ArrayList<Utente> utente;
+
+    public ArrayList<Utente> fattorini;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -30,22 +31,24 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
 
         coldStart = true;
+
         authenticator = FirebaseAuth.getInstance();
         FireStoreController database = new FireStoreController();
-        user = database.getUtente(authenticator.getCurrentUser().getUid(), authenticator.getCurrentUser().getEmail());
+        utente = database.getUtente(authenticator.getCurrentUser().getUid(), authenticator.getCurrentUser().getEmail());
+        fattorini = database.getFattorini();
 
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        BottomNavigationView navView = findViewById(R.id.nav_view);
-        AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder
-            (
-                R.id.navigation_ordini,
-                R.id.navigation_consegne,
-                R.id.navigation_aggiungi_ordine,
-                R.id.navigation_profilo
-            )
-            .build();
+        /*
+        if(!utente.get(0).fattorino)
+        {
+            BottomNavigationView navView = findViewById(R.id.nav_view);
+            navView.getMenu().clear();
+            navView.inflateMenu(R.menu.bottom_nav_menu_no_consegne);
+        }
+        */
+
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main);
         NavigationUI.setupWithNavController(binding.navView, navController);
     }

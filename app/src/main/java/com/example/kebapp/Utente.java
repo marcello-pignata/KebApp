@@ -1,6 +1,8 @@
 package com.example.kebapp;
 
-public class Utente
+import java.io.Serializable;
+
+public class Utente implements Serializable
 {
     public String userID, nome, email;
     public boolean fattorino;
@@ -11,5 +13,11 @@ public class Utente
         this.nome = nome;
         this.email = email;
         this.fattorino = fattorino;
+    }
+
+    Utente(String userID, String nome)
+    {
+        this.userID = userID;
+        this.nome = nome;
     }
 }

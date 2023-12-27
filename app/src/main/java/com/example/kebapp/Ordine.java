@@ -14,6 +14,7 @@ public class Ordine
     public String orarioInserito;
     public String note;
     public String numero;
+    public String IDFattorino;
     public ArrayList<Prodotto> prodotti;
     public double totale;
     public int status;

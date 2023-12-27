@@ -230,6 +230,11 @@ public class FireStoreController {
         database.collection("ordini").document(ID).update("status", status);
     }
 
+    public void setFattorinoOrdine(String ID, String UserID)
+    {
+        database.collection("ordini").document(ID).update("fattorino", UserID);
+    }
+
     public ArrayList<Utente> getUtente(String userID, String email)
     {
         ArrayList<Utente> result = new ArrayList<>();
@@ -244,6 +249,37 @@ public class FireStoreController {
                     result.add(new Utente(userID, (String)data.get("nome"), email, (boolean)data.get("fattorino")));
                 }
             });
+
+        return result;
+    }
+
+    public ArrayList<Utente> getFattorini()
+    {
+        ArrayList<Utente> result = new ArrayList<>();
+
+        database.collection("utenti").whereEqualTo("fattorino", true). get().addOnCompleteListener(
+                new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task)
+                    {
+                        String UserID, nome;
+
+                        if (task.isSuccessful())
+                        {
+                            for (QueryDocumentSnapshot document : task.getResult())
+                            {
+                                UserID = document.getId();
+                                nome = (String)document.getData().get("nome");
+
+                                result.add(new Utente(UserID, nome));
+                            }
+                        }
+                        else
+                        {
+                            Log.w(TAG, "Error getting documents.", task.getException());
+                        }
+                    }
+                });
 
         return result;
     }

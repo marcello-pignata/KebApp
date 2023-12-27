@@ -12,9 +12,12 @@ import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
+import java.util.ArrayList;
+
 public class LoginActivity extends AppCompatActivity
 {
     private final String TAG = "LoginActivity";
+    FirebaseAuth authenticator;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -26,11 +29,15 @@ public class LoginActivity extends AppCompatActivity
         textInputLayoutEmail.setErrorIconDrawable(0);
         textInputLayoutPassword.setErrorIconDrawable(0);
 
-        FirebaseAuth authenticator = FirebaseAuth.getInstance();
+        authenticator = FirebaseAuth.getInstance();
 
         if(authenticator.getCurrentUser() != null)
         {
-            launchMainActivity();
+            try
+            {
+                launchMainActivity();
+            }
+            catch (Exception e){throw new RuntimeException(e);}
         }
 
 
@@ -52,7 +59,11 @@ public class LoginActivity extends AppCompatActivity
                             {
                                 if (task.isSuccessful())
                                 {
-                                    launchMainActivity();
+                                    try
+                                    {
+                                        launchMainActivity();
+                                    }
+                                    catch (Exception e){throw new RuntimeException(e);}
                                 }
                                 else
                                 {
@@ -75,7 +86,7 @@ public class LoginActivity extends AppCompatActivity
         });
     }
 
-    public void launchMainActivity()
+    synchronized public void launchMainActivity()
     {
         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
         startActivity(intent);

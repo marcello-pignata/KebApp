@@ -34,10 +34,10 @@ public class ProfiloFragment extends Fragment
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState)
     {
-        String userID = ((MainActivity)getActivity()).user.get(0).userID;
-        String nome = ((MainActivity)getActivity()).user.get(0).nome;
-        String email = ((MainActivity)getActivity()).user.get(0).email;
-        boolean fattorino = ((MainActivity)getActivity()).user.get(0).fattorino;
+        String userID = ((MainActivity)getActivity()).utente.get(0).userID;
+        String nome = ((MainActivity)getActivity()).utente.get(0).nome;
+        String email = ((MainActivity)getActivity()).utente.get(0).email;
+        boolean fattorino = ((MainActivity)getActivity()).utente.get(0).fattorino;
 
         ((TextView)getView().findViewById(R.id.textViewUserID)).setText(userID);
         ((TextView)getView().findViewById(R.id.textViewNomeUtente)).setText(nome);
