@@ -12,6 +12,7 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import com.example.kebapp.databinding.ActivityMainBinding;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.ArrayList;
 
@@ -20,11 +21,18 @@ public class MainActivity extends AppCompatActivity
     private ActivityMainBinding binding;
     private final String TAG = "MainActivity";
     public boolean coldStart;
+    public FirebaseAuth authenticator;
+    public ArrayList<Utente> user;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
 
+        coldStart = true;
+        authenticator = FirebaseAuth.getInstance();
+        FireStoreController database = new FireStoreController();
+        user = database.getUtente(authenticator.getCurrentUser().getUid(), authenticator.getCurrentUser().getEmail());
 
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
@@ -40,7 +48,5 @@ public class MainActivity extends AppCompatActivity
             .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main);
         NavigationUI.setupWithNavController(binding.navView, navController);
-
-        coldStart = true;
     }
 }

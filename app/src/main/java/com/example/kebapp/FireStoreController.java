@@ -6,8 +6,8 @@ import androidx.annotation.NonNull;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.android.gms.tasks.Tasks;
 import com.google.firebase.Timestamp;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -16,13 +16,12 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.concurrent.ExecutionException;
 
-public class FireStoreHandler {
+public class FireStoreController {
     private final String TAG = "FireStoreHandler";
     private FirebaseFirestore database;
 
-    public FireStoreHandler() {
+    public FireStoreController() {
         database = FirebaseFirestore.getInstance();
     }
 
@@ -229,5 +228,23 @@ public class FireStoreHandler {
     public void setOrdineStatus(String ID, int status)
     {
         database.collection("ordini").document(ID).update("status", status);
+    }
+
+    public ArrayList<Utente> getUtente(String userID, String email)
+    {
+        ArrayList<Utente> result = new ArrayList<>();
+
+        database.collection("utenti").document(userID).get().addOnCompleteListener(
+            new OnCompleteListener<DocumentSnapshot>()
+            {
+                @Override
+                public void onComplete(@NonNull Task<DocumentSnapshot> task)
+                {
+                    Map<String, Object> data = task.getResult().getData();
+                    result.add(new Utente(userID, (String)data.get("nome"), email, (boolean)data.get("fattorino")));
+                }
+            });
+
+        return result;
     }
 }

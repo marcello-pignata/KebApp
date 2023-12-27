@@ -3,7 +3,6 @@ package com.example.kebapp.ui.aggiungi_ordine;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -157,7 +156,7 @@ public class RecyclerViewProdottiAdapter extends RecyclerView.Adapter<RecyclerVi
         ViewHolder(View itemView)
         {
             super(itemView);
-            textViewNome = itemView.findViewById(R.id.textViewNome);
+            textViewNome = itemView.findViewById(R.id.textViewNomeUtente);
             textViewQuantita = itemView.findViewById(R.id.textViewQuantita);
             buttonAggiungiIngredienti = itemView.findViewById(R.id.buttonAggiungiIngredienti);
             buttonRimuoviProdotto = itemView.findViewById(R.id.buttonRimuoviProdotto);

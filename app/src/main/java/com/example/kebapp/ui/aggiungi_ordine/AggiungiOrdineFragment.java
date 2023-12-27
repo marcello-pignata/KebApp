@@ -10,7 +10,6 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,7 +17,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.kebapp.FireStoreHandler;
+import com.example.kebapp.FireStoreController;
 import com.example.kebapp.Ingrediente;
 import com.example.kebapp.Ordine;
 import com.example.kebapp.Prodotto;
@@ -54,7 +53,7 @@ public class AggiungiOrdineFragment extends Fragment
         RecyclerViewProdottiAdapter adapter = new RecyclerViewProdottiAdapter(getContext());
 
         // collegamento con database FireStore
-        FireStoreHandler database = new FireStoreHandler();
+        FireStoreController database = new FireStoreController();
 
         // download elenco prodotti
         ArrayList<Prodotto> listaProdotti = database.getProdotti();

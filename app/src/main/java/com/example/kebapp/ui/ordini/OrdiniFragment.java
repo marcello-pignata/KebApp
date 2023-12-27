@@ -10,6 +10,7 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.TextView;
@@ -46,7 +47,7 @@ public class OrdiniFragment extends Fragment
         View buttonAggiorna = getView().findViewById(R.id.buttonAggiorna);
         View gifLoading = getView().findViewById(R.id.gifLoading);
 
-        if(!((MainActivity)getActivity()).coldStart)
+        if(((MainActivity)getActivity()).coldStart)
         {
             ((MainActivity)getActivity()).coldStart = false;
             buttonAggiorna.postDelayed(new Runnable()
@@ -134,11 +135,13 @@ public class OrdiniFragment extends Fragment
             newCard.setOnClickListener(item ->
                 {
                     View popupViewMain = getLayoutInflater().inflate(R.layout.card_ordine_popup_main, null);
+                    ((TextView)popupViewMain.findViewById(R.id.textViewID)).setText("Ordine #" + ID);
                     PopupWindow popupWindowMain = new PopupWindow(popupViewMain, -2, -2, true);
 
                     popupViewMain.findViewById(R.id.buttonImpostaStato).setOnClickListener(lambda1 ->
                     {
                         View popupViewStato = getLayoutInflater().inflate(R.layout.card_ordine_popup_imposta_stato, null);
+                        ((TextView)popupViewStato.findViewById(R.id.textViewID)).setText("Ordine #" + ID);
                         PopupWindow popupWindowStato = new PopupWindow(popupViewStato, -2, -2, true);
 
                         popupViewStato.findViewById(R.id.buttonInPreparazione).setOnClickListener(lambda2 ->
@@ -177,6 +180,7 @@ public class OrdiniFragment extends Fragment
                     popupViewMain.findViewById(R.id.buttonElimina).setOnClickListener(lambda6 ->
                     {
                         View popupViewElimina = getLayoutInflater().inflate(R.layout.card_ordine_popup_elimina, null);
+                        ((TextView)popupViewElimina.findViewById(R.id.textViewID)).setText("Ordine #" + ID);
                         PopupWindow popupWindowElimina = new PopupWindow(popupViewElimina, -2, -2, true);
 
                         popupViewElimina.findViewById(R.id.buttonSi).setOnClickListener(lambda2 ->
