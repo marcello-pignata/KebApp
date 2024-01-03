@@ -28,121 +28,173 @@
             android:layout_height="match_parent"
             android:background="@color/black"/>
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/textViewNomeOrdine"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:layout_marginTop="3dp"
-                android:fontFamily="@font/sf_bold"
-                android:text="Mario"
-                android:textColor="@color/black"
-                android:textSize="17dp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/textViewTotale"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.0" />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-            <TextView
-                android:id="@+id/textViewOrarioRichiesto"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="1dp"
-                android:fontFamily="@font/sf_black"
-                android:text="20:00"
-                android:textColor="@color/black"
-                android:textSize="19dp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/textViewTotale"
-                app:layout_constraintHorizontal_bias="0.152"
-                app:layout_constraintStart_toEndOf="@+id/textViewNomeOrdine"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.0" />
+                <TextView
+                    android:id="@+id/textViewNomeOrdine"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="3dp"
+                    android:text="Mario"
+                    android:textColor="@color/black"
+                    android:textSize="17dp"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/sf_black"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/textViewTotale"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0" />
 
-            <TextView
-                android:id="@+id/textViewTotale"
-                android:layout_width="wrap_content"
-                android:layout_height="21dp"
-                android:layout_marginTop="5dp"
-                android:fontFamily="@font/sf_medium"
-                android:text="28€"
-                android:textColor="@color/black"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.941"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.0" />
+                <TextView
+                    android:id="@+id/textViewNumeroCellulare"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/sf_black"
+                    android:text="3805995513"
+                    android:textColor="@color/black"
+                    android:textSize="13dp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toTopOf="@+id/textViewIndirizzoOrdine"
+                    app:layout_constraintEnd_toStartOf="@+id/textViewOrarioRichiesto"
+                    app:layout_constraintHorizontal_bias="0.208"
+                    app:layout_constraintStart_toEndOf="@+id/textViewNomeOrdine"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.818" />
 
-            <TextView
-                android:clickable="true"
-                android:id="@+id/textViewIndirizzoOrdine"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:layout_marginTop="-1dp"
-                android:drawableLeft="@drawable/baseline_content_copy_24"
-                android:fontFamily="@font/sf_black"
-                android:text="via San Paolo 24, Cernusco  "
-                android:textColor="@color/black"
-                android:textStyle="bold"
-                android:maxWidth="220dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/textViewApi"
-                app:layout_constraintHorizontal_bias="0.018"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textViewNomeOrdine"
-                app:layout_constraintVertical_bias="0.01" />
+                <TextView
+                    android:id="@+id/textViewOrarioRichiesto"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="1dp"
+                    android:fontFamily="@font/sf_black"
+                    android:text="20:00"
+                    android:textColor="@color/black"
+                    android:textSize="19dp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.874"
+                    app:layout_constraintStart_toEndOf="@+id/textViewNomeOrdine"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0" />
 
-            <TextView
-                android:id="@+id/textViewApi"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:drawableLeft="@drawable/baseline_check_box_24"
-                android:text=""
-                app:layout_constraintBottom_toTopOf="@+id/textViewLinea1"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.977"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textViewTotale"
-                app:layout_constraintVertical_bias="0.196" />
+                <TextView
+                    android:id="@+id/textViewTotale"
+                    android:layout_width="wrap_content"
+                    android:layout_height="21dp"
+                    android:layout_marginTop="2dp"
+                    android:fontFamily="@font/sf_medium"
+                    android:text="28€"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.963"
+                    app:layout_constraintStart_toEndOf="@+id/textViewNomeFattorino"
+                    app:layout_constraintTop_toBottomOf="@+id/textViewApi"
+                    app:layout_constraintVertical_bias="0.978" />
+
+                <TextView
+                    android:id="@+id/textViewIndirizzoOrdine"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="-1dp"
+                    android:clickable="true"
+                    android:drawableRight="@drawable/baseline_content_copy_24"
+                    android:fontFamily="@font/sf_black"
+                    android:maxWidth="220dp"
+                    android:text="via San Paolo 24, Cernusco "
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/textViewApi"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textViewNomeOrdine"
+                    app:layout_constraintVertical_bias="0.052" />
+
+                <TextView
+                    android:id="@+id/textViewNomeFattorino"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Fattorino: Carlos"
+                    android:textSize="14dp"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.018"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textViewIndirizzoOrdine" />
+
+                <TextView
+                    android:id="@+id/textViewApi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/cloud"
+                    android:drawableTint="@color/cyan"
+                    android:text=""
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.97"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textViewOrarioRichiesto"
+                    app:layout_constraintVertical_bias="0.178" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <TextView
                 android:id="@+id/textViewLinea1"
                 android:layout_width="match_parent"
                 android:layout_height="2dp"
-                android:background="@color/black"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textViewIndirizzoOrdine"
-                app:layout_constraintVertical_bias="0.032" />
+                android:background="@color/black" />
 
-            <TextView
-                android:id="@+id/textViewProdotti"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
-                android:text="1 Margherita\n\t\t\t+ patatine"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textViewLinea1"
-                app:layout_constraintVertical_bias="0.0" />
+                android:orientation="horizontal">
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+                <TextView
+                    android:id="@+id/textViewProdotti"
+                    android:layout_width="220dp"
+                    android:layout_height="match_parent"
+                    android:layout_margin="5dp"
+                    android:text="1 Margherita\n\t\t\t+ patatine"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintVertical_bias="0.0" />
+                <TextView
+                    android:id="@+id/textViewLinea2"
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:layout_margin="6dp"
+                    android:background="@color/black"/>
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="match_parent"
+                    android:text="Note: \nMarco"
+                    android:textSize="14dp"
+
+                    android:textColor="@color/black"
+                    android:textStyle="bold"/>
+            </LinearLayout>
+        </LinearLayout>
 
     </LinearLayout>
-
 </androidx.cardview.widget.CardView>

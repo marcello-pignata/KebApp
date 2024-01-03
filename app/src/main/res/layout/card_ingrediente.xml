@@ -12,35 +12,35 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+
         <TextView
-            android:id="@+id/textViewNomeProdotto"
+            android:id="@+id/textViewNomeIngrediente"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
+            android:maxLines="2"
             android:text="NomeIngrediente"
-            android:textSize="30dp"
+            android:textSize="17dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintEnd_toStartOf="@+id/textViewPrezzoIngrediente"
+            app:layout_constraintHorizontal_bias="0.046"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0" />
-
+            app:layout_constraintVertical_bias="0.52" />
 
         <TextView
-            android:id="@+id/textViewPrezzoProdotto"
+            android:id="@+id/textViewPrezzoIngrediente"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginBottom="17dp"
-            android:text="0.00€"
+            android:layout_marginEnd="19dp"
+            android:text="+0.00€"
             android:textSize="20dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.08"
-            app:layout_constraintStart_toEndOf="@+id/textViewNomeProdotto"
+            app:layout_constraintEnd_toStartOf="@+id/checkBoxSelezionaIngrediente"
+            app:layout_constraintHorizontal_bias="0.991"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="1.0" />
+            app:layout_constraintVertical_bias="0.523" />
 
         <CheckBox
             android:id="@+id/checkBoxSelezionaIngrediente"
@@ -51,6 +51,17 @@
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+        <Spinner
+            android:id="@+id/spinner"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:entries="@array/Ingredienti"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.997"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.433" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
