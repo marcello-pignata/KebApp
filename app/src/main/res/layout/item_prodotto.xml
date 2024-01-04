@@ -13,6 +13,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
+        android:textColor="@color/black"
         android:text="Nome\n\t\t+ Aggiunta1\n\t\t+ Aggiunta2\n"
         android:layout_marginStart="30dp"
         />
@@ -23,6 +24,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
         android:layout_weight="1"
+        android:textColor="@color/black"
         android:text="x1" />
 
     <Button

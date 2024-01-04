@@ -21,6 +21,7 @@
             android:maxLines="2"
             android:text="NomeIngrediente"
             android:textSize="17dp"
+            android:textColor="@color/black"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/textViewPrezzoIngrediente"
             app:layout_constraintHorizontal_bias="0.046"
@@ -35,6 +36,7 @@
             android:layout_marginEnd="19dp"
             android:text="+0.00€"
             android:textSize="20dp"
+            android:textColor="@color/black"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/checkBoxSelezionaIngrediente"
             app:layout_constraintHorizontal_bias="0.991"
@@ -51,6 +53,7 @@
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
         <Spinner
             android:id="@+id/spinner"
             android:layout_width="30dp"
@@ -58,10 +61,10 @@
             android:entries="@array/Ingredienti"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.997"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.433" />
+            app:layout_constraintVertical_bias="0.444" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
