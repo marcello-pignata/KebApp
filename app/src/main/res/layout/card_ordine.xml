@@ -16,7 +16,6 @@
         android:orientation="horizontal"
         android:background="@drawable/round_corners_card">
 
-
         <TextView
             android:id="@+id/textViewColoreStatus"
             android:layout_width="40dp"
@@ -110,7 +109,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
                     android:layout_marginTop="-1dp"
-                    android:clickable="true"
+                    android:textIsSelectable="true"
                     android:drawableRight="@drawable/baseline_content_copy_24"
                     android:fontFamily="@font/sf_black"
                     android:maxWidth="220dp"
@@ -167,7 +166,7 @@
 
                 <TextView
                     android:id="@+id/textViewProdotti"
-                    android:layout_width="220dp"
+                    android:layout_width="190dp"
                     android:layout_height="match_parent"
                     android:layout_margin="5dp"
                     android:text="1 Margherita\n\t\t\t+ patatine"
@@ -188,13 +187,13 @@
                 <TextView
                     android:layout_width="fill_parent"
                     android:layout_height="match_parent"
-                    android:text="Note: \nMarco"
-                    android:textSize="14dp"
-
+                    android:text="Note: \nCitofonare Serravalle, numero 46"
+                    android:textSize="12dp"
+                    android:layout_marginRight="2dp"
+                    android:layout_marginBottom="3dp"
                     android:textColor="@color/black"
                     android:textStyle="bold"/>
             </LinearLayout>
         </LinearLayout>
-
     </LinearLayout>
 </androidx.cardview.widget.CardView>

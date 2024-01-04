@@ -39,7 +39,6 @@ public class ProfiloFragment extends Fragment
         String email = ((MainActivity)getActivity()).utente.get(0).email;
         boolean fattorino = ((MainActivity)getActivity()).utente.get(0).fattorino;
 
-        ((TextView)getView().findViewById(R.id.textViewUserID)).setText(userID);
         ((TextView)getView().findViewById(R.id.textViewNomeUtente)).setText(nome);
         ((TextView)getView().findViewById(R.id.textViewEmailUtente)).setText(email);
         ((CheckBox)getView().findViewById(R.id.checkBoxFattorino)).setChecked(fattorino);
