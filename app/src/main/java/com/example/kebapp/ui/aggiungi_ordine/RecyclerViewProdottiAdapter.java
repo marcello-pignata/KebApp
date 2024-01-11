@@ -17,6 +17,8 @@ import com.example.kebapp.Prodotto;
 import com.example.kebapp.R;
 
 import java.io.Serializable;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -97,8 +99,18 @@ public class RecyclerViewProdottiAdapter extends RecyclerView.Adapter<RecyclerVi
         // ottengo il prodotto da aggiungere
         Prodotto prodotto = mData.get(position);
 
+        //calcolo il prezzo del prodotto + le relative aggiunte
+        double prezzoProdotto = prodotto.prezzo;
+        for (int i = 0; i < prodotto.aggiunte.size(); i++)
+        {
+            prezzoProdotto += prodotto.aggiunte.get(i).prezzo;
+        }
+
         // imposto le textview per il nome e la quantità con i corrispettivi dati
+        NumberFormat formatter = new DecimalFormat("#0.00");
+
         holder.textViewNome.setText(prodotto.nome);
+        holder.textViewPrezzoProdotto.setText(formatter.format(prezzoProdotto) + "€");
         holder.textViewQuantita.setText("x" + prodotto.quantita);
 
         // se sono presenti aggiunte le scrivo una per una nella textViewNome
@@ -150,6 +162,7 @@ public class RecyclerViewProdottiAdapter extends RecyclerView.Adapter<RecyclerVi
     {
         TextView textViewNome;
         TextView textViewQuantita;
+        TextView textViewPrezzoProdotto;
         Button buttonAggiungiIngredienti;
         Button buttonRimuoviProdotto;
 
@@ -158,6 +171,7 @@ public class RecyclerViewProdottiAdapter extends RecyclerView.Adapter<RecyclerVi
             super(itemView);
             textViewNome = itemView.findViewById(R.id.textViewNomeUtente);
             textViewQuantita = itemView.findViewById(R.id.textViewQuantita);
+            textViewPrezzoProdotto = itemView.findViewById(R.id.textViewPrezzoProdotto);
             buttonAggiungiIngredienti = itemView.findViewById(R.id.buttonAggiungiIngredienti);
             buttonRimuoviProdotto = itemView.findViewById(R.id.buttonRimuoviProdotto);
             itemView.setOnClickListener(this);

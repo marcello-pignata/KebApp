@@ -1,4 +1,4 @@
-package com.example.kebapp.ui.ordini;
+package com.example.kebapp;
 
 import com.example.kebapp.FireStoreController;
 import com.example.kebapp.Ordine;
@@ -11,9 +11,9 @@ public class OrdiniUpdaterThread extends Thread
     public static final int REFRESH_RATE = 3000;
 
     private FireStoreController database;
-    ArrayList<Ordine> updatedOrdini;
+    public ArrayList<Ordine> updatedOrdini;
 
-    OrdiniUpdaterThread()
+    public OrdiniUpdaterThread()
     {
         updatedOrdini = new ArrayList<>();
         database = new FireStoreController();

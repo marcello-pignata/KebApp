@@ -23,6 +23,8 @@ import com.example.kebapp.Ordine;
 import com.example.kebapp.Prodotto;
 import com.example.kebapp.R;
 
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.ArrayList;
 
 public class AggiungiOrdineFragment extends Fragment
@@ -61,12 +63,15 @@ public class AggiungiOrdineFragment extends Fragment
         // download elenco ingredienti
         adapter.addListaIngredienti(database.getIngredienti());
 
+
+        NumberFormat formatter = new DecimalFormat("#0.00");
+
         // observer che viene eseguito quando viene chiamato notifyItemRangeChanged dall'adapter
         adapter.registerAdapterDataObserver(new RecyclerView.AdapterDataObserver() {
             @Override
             public void onItemRangeChanged(int positionStart, int itemCount)
             {
-                ((TextView)getView().findViewById(R.id.textViewTotale)).setText(String.valueOf(adapter.getTotale()) + '€');
+                ((TextView)getView().findViewById(R.id.textViewTotale)).setText(formatter.format(adapter.getTotale()) + '€');
             }
         });
 
@@ -86,7 +91,7 @@ public class AggiungiOrdineFragment extends Fragment
                                 // aggiunta dati ricevuti alla recycler view
                                 adapter.getItem(idProdotto).aggiunte = listaAggiunte;
                                 recyclerView.setAdapter(adapter);
-                                ((TextView)getView().findViewById(R.id.textViewTotale)).setText(String.valueOf(adapter.getTotale()) + '€');
+                                ((TextView)getView().findViewById(R.id.textViewTotale)).setText(formatter.format(adapter.getTotale()) + '€');
                             }
                         }
                 );
@@ -107,7 +112,7 @@ public class AggiungiOrdineFragment extends Fragment
                                 // aggiunta dati ricevuti alla recycler view
                                 adapter.addItem(prodotto);
                                 recyclerView.setAdapter(adapter);
-                                ((TextView)getView().findViewById(R.id.textViewTotale)).setText(String.valueOf(adapter.getTotale()) + '€');
+                                ((TextView)getView().findViewById(R.id.textViewTotale)).setText(formatter.format(adapter.getTotale()) + '€');
                             }
                         }
                 );

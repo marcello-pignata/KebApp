@@ -14,6 +14,8 @@ import com.example.kebapp.Ingrediente;
 import com.example.kebapp.Prodotto;
 import com.example.kebapp.R;
 
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.ArrayList;
 
 public class SelezionaIngredientiActivity extends AppCompatActivity
@@ -53,7 +55,8 @@ public class SelezionaIngredientiActivity extends AppCompatActivity
             newTextView.setText(listaIngredienti.get(i).nome);
 
             newTextView = newCard.findViewById(R.id.textViewPrezzoIngrediente);
-            newTextView.setText(listaIngredienti.get(i).prezzo + "€");
+            NumberFormat formatter = new DecimalFormat("#0.00");
+            newTextView.setText(formatter.format(listaIngredienti.get(i).prezzo) + "€");
 
             linearLayoutIngredienti.addView(newCard);
 
