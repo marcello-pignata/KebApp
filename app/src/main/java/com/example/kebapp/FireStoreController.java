@@ -128,7 +128,7 @@ public class FireStoreController {
 
                     int status;
                     double totale;
-                    String ID, nome, indirizzo, orarioRichiesto, orarioInserito, note, numero;
+                    String ID, nome, indirizzo, orarioRichiesto, orarioInserito, note, numero, IDFattorino;
                     ArrayList<Prodotto> prodotti;
 
                     ArrayList<Map<String, Object>> prodottiArray;
@@ -152,6 +152,7 @@ public class FireStoreController {
                             numero = (String)data.get("numero");
                             orarioRichiesto = (String)data.get("orario_richiesto");
                             orarioInserito = ((Timestamp)data.get("orario_inserito")).toString();
+                            IDFattorino = (String)data.get("IDfattorino");
 
                             try
                             {
@@ -174,7 +175,7 @@ public class FireStoreController {
                                 prodotti.add(new Prodotto(nomeProdotto, quantitaProdotto, aggiunteProdottoString));
                             }
 
-                            result.add(new Ordine(ID, nome, indirizzo, orarioRichiesto, orarioInserito, note, numero, prodotti, totale, status));
+                            result.add(new Ordine(ID, nome, indirizzo, orarioRichiesto, orarioInserito, note, numero, IDFattorino, prodotti, totale, status));
                         }
                     }
                     else
@@ -198,6 +199,7 @@ public class FireStoreController {
         ordineMap.put("orario_richiesto", ordine.orarioRichiesto);
         ordineMap.put("status", 0);
         ordineMap.put("totale", ordine.totale);
+        ordineMap.put("IDfattorino", "");
 
         ArrayList<Map> prodottiList = new ArrayList<>();
 
@@ -232,7 +234,7 @@ public class FireStoreController {
 
     public void setFattorinoOrdine(String ID, String UserID)
     {
-        database.collection("ordini").document(ID).update("fattorino", UserID);
+        database.collection("ordini").document(ID).update("IDfattorino", UserID);
     }
 
     public ArrayList<Utente> getUtente(String userID, String email)

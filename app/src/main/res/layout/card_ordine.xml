@@ -42,11 +42,11 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
                     android:layout_marginTop="3dp"
+                    android:fontFamily="@font/sf_black"
                     android:text="Mario"
                     android:textColor="@color/black"
                     android:textSize="17dp"
                     android:textStyle="bold"
-                    android:fontFamily="@font/sf_black"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/textViewTotale"
                     app:layout_constraintHorizontal_bias="0.0"
@@ -90,18 +90,18 @@
                 <TextView
                     android:id="@+id/textViewTotale"
                     android:layout_width="wrap_content"
-                    android:layout_height="21dp"
-                    android:layout_marginTop="2dp"
+                    android:layout_height="wrap_content"
                     android:fontFamily="@font/sf_medium"
                     android:text="28€"
                     android:textColor="@color/black"
+                    android:textSize="20dp"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.963"
-                    app:layout_constraintStart_toEndOf="@+id/textViewNomeFattorino"
-                    app:layout_constraintTop_toBottomOf="@+id/textViewApi"
-                    app:layout_constraintVertical_bias="0.978" />
+                    app:layout_constraintHorizontal_bias="0.835"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.809" />
 
                 <TextView
                     android:id="@+id/textViewIndirizzoOrdine"
@@ -109,27 +109,27 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
                     android:layout_marginTop="-1dp"
-                    android:textIsSelectable="true"
                     android:drawableRight="@drawable/baseline_content_copy_24"
                     android:fontFamily="@font/sf_black"
                     android:maxWidth="220dp"
                     android:text="via San Paolo 24, Cernusco "
                     android:textColor="@color/black"
+                    android:textIsSelectable="true"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/textViewApi"
+                    app:layout_constraintEnd_toStartOf="@+id/imageViewAPI"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textViewNomeOrdine"
                     app:layout_constraintVertical_bias="0.052" />
 
                 <TextView
-                    android:id="@+id/textViewNomeFattorino"
+                    android:id="@+id/textViewFattorino"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Fattorino: Carlos"
-                    android:textSize="14dp"
                     android:textColor="@color/black"
+                    android:textSize="14dp"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -137,12 +137,12 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textViewIndirizzoOrdine" />
 
+                <!--
                 <TextView
-                    android:id="@+id/textViewApi"
+                    android:id="@+id/textViewAPI"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:drawableLeft="@drawable/cloud"
-                    android:drawableTint="@color/cyan"
+                    android:drawableLeft="@drawable/sun"
                     android:text=""
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -150,6 +150,19 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textViewOrarioRichiesto"
                     app:layout_constraintVertical_bias="0.178" />
+                 -->
+
+                <ImageView
+                    android:id="@+id/imageViewAPI"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.97"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textViewOrarioRichiesto"
+                    app:layout_constraintVertical_bias="0.178"
+                    app:srcCompat="@drawable/sun" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -185,14 +198,15 @@
                     android:background="@color/black"/>
 
                 <TextView
+                    android:id="@+id/textViewNote"
                     android:layout_width="fill_parent"
                     android:layout_height="match_parent"
-                    android:text="Note: \nCitofonare Serravalle, numero 46"
-                    android:textSize="12dp"
                     android:layout_marginRight="2dp"
                     android:layout_marginBottom="3dp"
+                    android:text="Note: \nCitofonare Serravalle, numero 46"
                     android:textColor="@color/black"
-                    android:textStyle="bold"/>
+                    android:textSize="12dp"
+                    android:textStyle="bold" />
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>

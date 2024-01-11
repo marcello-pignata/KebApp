@@ -6,11 +6,15 @@ import androidx.appcompat.content.res.AppCompatResources;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
+import android.os.Handler;
+import android.os.Looper;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.Spinner;
@@ -21,8 +25,19 @@ import com.example.kebapp.MainActivity;
 import com.example.kebapp.Ordine;
 import com.example.kebapp.R;
 import com.example.kebapp.Utente;
+import com.google.logging.type.HttpRequest;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class OrdiniFragment extends Fragment
 {
@@ -112,6 +127,8 @@ public class OrdiniFragment extends Fragment
         // elimino tutti gli ordini già presenti nel layout
         layout.removeAllViews();
 
+        Map<String, ImageView> riferimentiPerAPI = new HashMap<String, ImageView>();
+
         // itero per ogni ordine da aggiungere al layout
         for (int i=0; i < ordini.size(); i++)
         {
@@ -126,7 +143,26 @@ public class OrdiniFragment extends Fragment
             ((TextView)newCard.findViewById(R.id.textViewNomeOrdine)).setText(ordine.nome);
             ((TextView)newCard.findViewById(R.id.textViewOrarioRichiesto)).setText(ordine.orarioRichiesto);
             ((TextView)newCard.findViewById(R.id.textViewIndirizzoOrdine)).setText(ordine.indirizzo);
+            ((TextView)newCard.findViewById(R.id.textViewNumeroCellulare)).setText(ordine.numero);
+            ((TextView)newCard.findViewById(R.id.textViewNote)).setText(ordine.note);
             ((TextView)newCard.findViewById(R.id.textViewTotale)).setText(String.valueOf(ordine.totale) + '€');
+
+            if(!ordine.IDFattorino.equals(""))
+            {
+                for (int j = 0; j < ((MainActivity)getActivity()).fattorini.size(); j++)
+                {
+                    if( ((MainActivity)getActivity()).fattorini.get(j).userID.equals(ordine.IDFattorino) )
+                    {
+                        ((TextView)newCard.findViewById(R.id.textViewFattorino)).setText("Fattorino: " +
+                                ((MainActivity)getActivity()).fattorini.get(j).nome);
+                        break;
+                    }
+                }
+            }
+            else
+            {
+                ((TextView)newCard.findViewById(R.id.textViewFattorino)).setText("");
+            }
 
             // con i seguenti cicli for ottengo la stringa composta da tutti i prodotti dell'ordine in questione e dalle rispettive aggiunte
             String newText = ""; // inizializzo una stringa vuota
@@ -167,6 +203,11 @@ public class OrdiniFragment extends Fragment
                     newTextView.setBackground(AppCompatResources.getDrawable(getContext(), R.drawable.status_in_preparazione));
                     break;
             }
+
+
+            riferimentiPerAPI.put(ordine.indirizzo, newCard.findViewById(R.id.imageViewAPI));
+
+
 
             // mi salvo in una variabile l'ID dell'ordine per passarlo all'OnClickListener
             final String IDOrdine = ordine.ID;
@@ -302,6 +343,62 @@ public class OrdiniFragment extends Fragment
             // aggiungo la nuova card appena creata al layout contenente tutti gli ordini
             layout.addView(newCard);
         }
+
+        ExecutorService executor = Executors.newSingleThreadExecutor();
+        //Handler handler = new Handler(Looper.getMainLooper());
+
+        executor.execute(() ->
+        {
+            for (Map.Entry<String, ImageView> set : riferimentiPerAPI.entrySet())
+            {
+                HttpURLConnection urlConnection = null;
+
+                try {
+
+
+                    URL url = new URL("https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/"
+                            + set.getKey().replace(" ", "%20") +
+                            "/today?unitGroup=metric&elements=precip%2Cpreciptype&include=remote%2Cobs%2Ccurrent&key=BS8QBEEBXEQ5BZMUTUVB4QYSN&contentType=csv");
+                    urlConnection = (HttpURLConnection) url.openConnection();
+
+                    int code = urlConnection.getResponseCode();
+                    if (code != 200) {
+                        throw new IOException("Invalid response from server: " + code);
+                    }
+
+                    BufferedReader rd = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()));
+                    String line = rd.readLine();
+                    line = rd.readLine();
+
+                    double prec;
+                    if (line.equals(",")) {
+                        prec = 0;
+                    } else {
+                        prec = Double.parseDouble(line.split(",")[0]);
+                    }
+
+                    Log.d(TAG, set.getKey() + " --> " + prec);
+
+
+                    if (prec >= 0.1)
+                    {
+                        set.getValue().setImageResource(R.drawable.rainy);
+                    } else
+                    {
+                        set.getValue().setImageResource(R.drawable.sun);
+                    }
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                } finally {
+                    if (urlConnection != null)
+                    {
+                        Log.d(TAG, "CONNECTION CLOSED");
+                        urlConnection.disconnect();
+                    }
+                }
+            }
+        });
     }
 
     void ApriSelezioneFattorino(String IDOrdine, ArrayList<PopupWindow> openedWindows)

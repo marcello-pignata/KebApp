@@ -27,6 +27,7 @@ public class Ordine
             String orarioInserito,
             String note,
             String numero,
+            String IDFattorino,
             ArrayList<Prodotto> prodotti,
             double totale,
             int status)
@@ -38,6 +39,7 @@ public class Ordine
         this.orarioInserito = orarioInserito;
         this.note = note;
         this.numero = numero;
+        this.IDFattorino = IDFattorino;
         this.prodotti = prodotti;
         this.totale = totale;
         this.status = status;
