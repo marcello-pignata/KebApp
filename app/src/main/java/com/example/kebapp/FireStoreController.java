@@ -235,6 +235,7 @@ public class FireStoreController {
     public void setFattorinoOrdine(String ID, String UserID)
     {
         database.collection("ordini").document(ID).update("IDfattorino", UserID);
+
     }
 
     public ArrayList<Utente> getUtente(String userID, String email)
@@ -248,7 +249,7 @@ public class FireStoreController {
                 public void onComplete(@NonNull Task<DocumentSnapshot> task)
                 {
                     Map<String, Object> data = task.getResult().getData();
-                    result.add(new Utente(userID, (String)data.get("nome"), email, (boolean)data.get("fattorino")));
+                    result.add(new Utente(userID, (String)data.get("nome"), email, (String)data.get("numero"), (boolean)data.get("fattorino")));
                 }
             });
 

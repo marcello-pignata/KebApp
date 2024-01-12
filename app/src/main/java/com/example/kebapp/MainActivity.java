@@ -173,8 +173,15 @@ public class MainActivity extends AppCompatActivity
                 // rendo visibile la view "greyout" presente in MainActivity, così da scurire lo sfondo dietro i popup che aprirò
                 findViewById(R.id.greyout).setVisibility(View.VISIBLE);
 
-                // inizializzo una view con il layout definito in card_ordine_popup_main.xml
-                View popupViewMain = getLayoutInflater().inflate(R.layout.card_ordine_popup_main, null);
+                View popupViewMain;
+                if (utente.get(0).fattorino)
+                {
+                    popupViewMain = getLayoutInflater().inflate(R.layout.card_ordine_popup_main_fattorino, null);
+                }
+                else
+                {
+                    popupViewMain = getLayoutInflater().inflate(R.layout.card_ordine_popup_main, null);
+                }
 
                 // imposto il corretto ID dell'ordine nel layout della view
                 ((TextView)popupViewMain.findViewById(R.id.textViewID)).setText("Ordine #" + IDOrdine);
@@ -196,6 +203,28 @@ public class MainActivity extends AppCompatActivity
 
                 // mostro a schermo la window appena creata
                 popupWindowMain.showAtLocation(new View(this), Gravity.CENTER, 0, 0);
+
+
+                if (utente.get(0).fattorino)
+                {
+                    popupViewMain.findViewById(R.id.buttonAssegnaATeStesso).setOnClickListener(lambda1 ->
+                    {
+                        if(ordine.status == 0)
+                        {
+                            // comunico a OrdiniUpdaterThread di impostare lo stato dell'ordine a "in consegna" sul server
+                            updater.impostaStatoOrdine(IDOrdine, 1);
+                        }
+
+                        // comunico a OrdiniUpdaterThread di impostare il fattorino selezionato all'ordine sul server
+                        updater.impostaFattorinoOrdine(IDOrdine, utente.get(0).userID);
+
+                        // chiudo tutte le window popup aperte
+                        popupWindowMain.dismiss();
+
+                        // avviso l'utente del successo dell'operazione
+                        Toast.makeText(this, "Fattorino assegnato, aggiorna la pagina per visualizzare le modfiche", Toast.LENGTH_LONG).show();
+                    });
+                }
 
                 // onClickListener del pulsante "Imposta stato"
                 popupViewMain.findViewById(R.id.buttonImpostaStato).setOnClickListener(lambda1 ->
@@ -231,7 +260,7 @@ public class MainActivity extends AppCompatActivity
 
                         // richiamo il metodo che si occupa di visualizzare la window popup per la selezione del fattorino
                         // e gli passo la lista di tutte le window popup che dovrà chiudere al suo termine
-                        ApriSelezioneFattorino(IDOrdine, openedWindows);
+                        ApriSelezioneFattorino(IDOrdine, ordine.status, openedWindows);
                     });
 
                     // onClickListener del pulsante "Consegnato"
@@ -258,7 +287,7 @@ public class MainActivity extends AppCompatActivity
 
                     // richiamo il metodo che si occupa di visualizzare la window popup per la selezione del fattorino
                     // e gli passo la lista di tutte le window popup che dovrà chiudere al suo termine
-                    ApriSelezioneFattorino(IDOrdine, openedWindows);
+                    ApriSelezioneFattorino(IDOrdine, ordine.status, openedWindows);
                 });
 
                 // onClickListener del pulsante "Elimina"
@@ -353,7 +382,7 @@ public class MainActivity extends AppCompatActivity
         });
     }
 
-    void ApriSelezioneFattorino(String IDOrdine, ArrayList<PopupWindow> openedWindows)
+    void ApriSelezioneFattorino(String IDOrdine, int statusOrdine, ArrayList<PopupWindow> openedWindows)
     {
         // creo e mostro a schermo una window popup con il layout definito in card_ordine_popup_seleziona_fattorino.xml
         // e le imposto il corretto ID dell'ordine
@@ -393,8 +422,11 @@ public class MainActivity extends AppCompatActivity
                 // ottengo lo userID del fattorino selezionato
                 String userID = fattorini.get(indexFattorino).userID;
 
-                // comunico a OrdiniUpdaterThread di impostare lo stato dell'ordine a "consegnato" sul server
-                updater.impostaStatoOrdine(IDOrdine, 1);
+                if(statusOrdine == 0)
+                {
+                    // comunico a OrdiniUpdaterThread di impostare lo stato dell'ordine a "in consegna" sul server
+                    updater.impostaStatoOrdine(IDOrdine, 1);
+                }
 
                 // comunico a OrdiniUpdaterThread di impostare il fattorino selezionato all'ordine sul server
                 updater.impostaFattorinoOrdine(IDOrdine, userID);

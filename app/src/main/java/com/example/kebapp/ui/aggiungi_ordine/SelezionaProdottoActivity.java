@@ -12,6 +12,8 @@ import android.widget.TextView;
 import com.example.kebapp.Prodotto;
 import com.example.kebapp.R;
 
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.ArrayList;
 
 public class SelezionaProdottoActivity extends AppCompatActivity
@@ -23,6 +25,8 @@ public class SelezionaProdottoActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_seleziona_prodotto);
+
+        NumberFormat formatter = new DecimalFormat("#0.00");
 
         // ottengo la lista dei prodotti disponibili passata da AggiungiOrdineFragment
         ArrayList<Prodotto> listaProdotti = (ArrayList<Prodotto>)getIntent().getSerializableExtra("listaProdotti");
@@ -46,7 +50,7 @@ public class SelezionaProdottoActivity extends AppCompatActivity
 
             // imposto il testo della text view per il prezzo del prodotto
             newTextView = newCard.findViewById(R.id.textViewPrezzoProdotto);
-            newTextView.setText(listaProdotti.get(i).prezzo + "€");
+            newTextView.setText(formatter.format(listaProdotti.get(i).prezzo) + "€");
 
             // inizializzo l'edit text per la quantità selezionata del prodotto
             EditText editTextQuantita = newCard.findViewById(R.id.editTextQuantita);

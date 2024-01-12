@@ -16,7 +16,7 @@
 
         <TextView
             android:id="@+id/textViewNomeProdotto"
-            android:layout_width="180dp"
+            android:layout_width="240dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
             android:fontFamily="@font/sf_medium"
@@ -35,8 +35,9 @@
 
         <TextView
             android:id="@+id/textViewDescrizione"
-            android:layout_width="180dp"
+            android:layout_width="240dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
             android:maxLines="3"
             android:singleLine="false"
             android:text="mozzarella, pomodoro, basilico"

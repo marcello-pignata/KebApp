@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/constraintLayoutProfilo"
+    android:id="@+id/linearLayoutProfilo"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.profilo.ProfiloFragment"
@@ -20,6 +20,23 @@
         android:textStyle="bold"
         android:textSize="20dp"
         android:fontFamily="@font/sf_bold"/>
+
+    <TextView
+        android:id="@+id/textView12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:textSize="19dp"
+        android:text="ID:" />
+
+    <TextView
+        android:id="@+id/textViewID"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="jlksadfojagbdhskjhfbaDSLKJ"
+        android:textSize="19dp"
+        />
 
     <TextView
         android:id="@+id/textView2"
@@ -60,12 +77,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="Numero telefono"
+        android:text="Numero di telefono:"
         android:textSize="19dp"
         />
 
     <TextView
-        android:id="@+id/numeroTelefono"
+        android:id="@+id/textViewNumeroTelefono"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"

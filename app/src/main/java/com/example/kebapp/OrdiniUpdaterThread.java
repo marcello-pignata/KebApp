@@ -40,6 +40,11 @@ public class OrdiniUpdaterThread extends Thread
     public void impostaStatoOrdine(String ID, int status)
     {
         database.setOrdineStatus(ID, status);
+
+        if(status == 0)
+        {
+            database.setFattorinoOrdine(ID, "");
+        }
     }
 
     public void impostaFattorinoOrdine(String ID, String UserID)
