@@ -81,7 +81,10 @@ public class SelezionaProdottoActivity extends AppCompatActivity
                 // altrimenti incremento di 1 il valore già presente
                 else
                 {
-                    editTextQuantita.setText(String.valueOf(Integer.parseInt(editTextQuantita.getText().toString())-1));
+                    if (Integer.parseInt(editTextQuantita.getText().toString()) != 0)
+                    {
+                        editTextQuantita.setText(String.valueOf(Integer.parseInt(editTextQuantita.getText().toString())-1));
+                    }
                 }
             });
 

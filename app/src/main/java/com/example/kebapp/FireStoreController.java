@@ -235,7 +235,6 @@ public class FireStoreController {
     public void setFattorinoOrdine(String ID, String UserID)
     {
         database.collection("ordini").document(ID).update("IDfattorino", UserID);
-
     }
 
     public ArrayList<Utente> getUtente(String userID, String email)
