@@ -18,7 +18,8 @@
             android:layout_centerInParent="true"
             android:layout_margin="10dp"
             android:textSize="22sp"
-            android:text="Ordine #5bsc3r6XQbJ6TxobmUnV"/>
+            android:text="Ordine #5bsc3r6XQbJ6TxobmUnV"
+            android:textColor="@color/black"/>
 
         <Button
             android:id="@+id/buttonAssegnaATeStesso"

@@ -18,7 +18,8 @@
             android:layout_centerInParent="true"
             android:layout_margin="10dp"
             android:textSize="22sp"
-            android:text="Ordine #5bsc3r6XQbJ6TxobmUnV"/>
+            android:text="Ordine #5bsc3r6XQbJ6TxobmUnV"
+            android:textColor="@color/black"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -26,28 +27,35 @@
             android:layout_centerInParent="true"
             android:layout_margin="10dp"
             android:textSize="22sp"
-            android:text="Seleziona stato:"/>
+            android:text="Seleziona stato:"
+            android:textColor="@color/black"/>
 
         <Button
             android:id="@+id/buttonInPreparazione"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_centerInParent="true"
-            android:text="In preparazione"/>
+            android:text="In preparazione"
+            android:backgroundTint="@color/red_in_preparazione"
+            android:textColor="@color/black"/>
 
         <Button
             android:id="@+id/buttonInConsegna"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_centerInParent="true"
-            android:text="In Consegna"/>
+            android:text="In Consegna"
+            android:backgroundTint="@color/yellow_in_consegna"
+            android:textColor="@color/black"/>
 
         <Button
             android:id="@+id/buttonConsegnato"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_centerInParent="true"
-            android:text="Consegnato"/>
+            android:text="Consegnato"
+            android:backgroundTint="@color/green_consegnato"
+            android:textColor="@color/black"/>
     -
     </LinearLayout>
 

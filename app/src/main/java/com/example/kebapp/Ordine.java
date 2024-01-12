@@ -12,9 +12,11 @@ public class Ordine
     public String indirizzo;
     public String orarioRichiesto;
     public String orarioInserito;
+
     public String note;
     public String numero;
     public String IDFattorino;
+    public boolean pioggia;
     public ArrayList<Prodotto> prodotti;
     public double totale;
     public int status;
@@ -28,6 +30,7 @@ public class Ordine
             String note,
             String numero,
             String IDFattorino,
+            boolean pioggia,
             ArrayList<Prodotto> prodotti,
             double totale,
             int status)
@@ -40,6 +43,7 @@ public class Ordine
         this.note = note;
         this.numero = numero;
         this.IDFattorino = IDFattorino;
+        this.pioggia = pioggia;
         this.prodotti = prodotti;
         this.totale = totale;
         this.status = status;

@@ -1,5 +1,6 @@
 package com.example.kebapp;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
@@ -68,6 +69,7 @@ public class MainActivity extends AppCompatActivity
     }
 
     // funzione che mostra nel fragment degli ordini gli ordini più recenti
+    @SuppressLint("SetTextI18n")
     public void RefreshOrdini(View currentView, ArrayList<Ordine> ordini)
     {
         // inizializzo il riferimento al layout contenente tutti gli ordini
@@ -76,7 +78,9 @@ public class MainActivity extends AppCompatActivity
         // elimino tutti gli ordini già presenti nel layout
         layout.removeAllViews();
 
-        Map<String, ImageView> riferimentiPerAPI = new HashMap<String, ImageView>();
+        // Hashmap che verrà passata al processo per l'interrogazione della API
+        // contiene l'oggetto e un riferimento alla relativa ImageView di ogni ordine
+        Map<Ordine, ImageView> riferimentiPerAPI = new HashMap<Ordine, ImageView>();
 
         // itero per ogni ordine da aggiungere al layout
         for (int i=0; i < ordini.size(); i++)
@@ -97,6 +101,15 @@ public class MainActivity extends AppCompatActivity
             ((TextView)newCard.findViewById(R.id.textViewNumeroCellulare)).setText(ordine.numero);
             ((TextView)newCard.findViewById(R.id.textViewNote)).setText(ordine.note);
             ((TextView)newCard.findViewById(R.id.textViewTotale)).setText(formatter.format(ordine.totale) + '€');
+
+            if(ordine.pioggia)
+            {
+                ((ImageView)newCard.findViewById(R.id.imageViewAPI)).setImageResource(R.drawable.rainy);
+            }
+            else
+            {
+                ((ImageView)newCard.findViewById(R.id.imageViewAPI)).setImageResource(R.drawable.sun);
+            }
 
             if(!ordine.IDFattorino.equals(""))
             {
@@ -159,7 +172,7 @@ public class MainActivity extends AppCompatActivity
             }
 
 
-            riferimentiPerAPI.put(ordine.indirizzo, newCard.findViewById(R.id.imageViewAPI));
+            riferimentiPerAPI.put(ordine, newCard.findViewById(R.id.imageViewAPI));
 
 
 
@@ -327,19 +340,20 @@ public class MainActivity extends AppCompatActivity
             layout.addView(newCard);
         }
 
+        // processo in background che interroga la API per il meteo per ogni ordine visualizzato
         ExecutorService executor = Executors.newSingleThreadExecutor();
-
         executor.execute(() ->
         {
-            for (Map.Entry<String, ImageView> set : riferimentiPerAPI.entrySet())
+            for (Map.Entry<Ordine, ImageView> set : riferimentiPerAPI.entrySet())
             {
                 HttpURLConnection urlConnection = null;
 
                 try {
 
+                    String indirizzo = set.getKey().indirizzo.replace(" ", "%20");
 
                     URL url = new URL("https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/"
-                            + set.getKey().replace(" ", "%20") +
+                            + indirizzo +
                             "/today?unitGroup=metric&elements=precip%2Cpreciptype&include=current%2Cobs%2Cremote%2Cfcst&key=BS8QBEEBXEQ5BZMUTUVB4QYSN&contentType=csv");
                     urlConnection = (HttpURLConnection) url.openConnection();
 
@@ -353,7 +367,8 @@ public class MainActivity extends AppCompatActivity
                     line = rd.readLine();
 
                     double prec;
-                    if (line.equals(",")) {
+                    if (line.equals(","))
+                    {
                         prec = 0;
                     } else {
                         prec = Double.parseDouble(line.split(",")[0]);
@@ -364,10 +379,18 @@ public class MainActivity extends AppCompatActivity
 
                     if (prec >= 0.1)
                     {
-                        set.getValue().setImageResource(R.drawable.rainy);
+                        if (!set.getKey().pioggia && (set.getKey().status == 0))
+                        {
+                            set.getValue().setImageResource(R.drawable.rainy);
+                            updater.impostaPioggiaOrdine(set.getKey().ID, true);
+                        }
                     } else
                     {
-                        set.getValue().setImageResource(R.drawable.sun);
+                        if (set.getKey().pioggia && (set.getKey().status == 0))
+                        {
+                            set.getValue().setImageResource(R.drawable.sun);
+                            updater.impostaPioggiaOrdine(set.getKey().ID, false);
+                        }
                     }
 
                 } catch (Exception e) {

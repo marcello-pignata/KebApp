@@ -1,8 +1,5 @@
 package com.example.kebapp;
 
-import com.example.kebapp.FireStoreController;
-import com.example.kebapp.Ordine;
-
 import java.util.ArrayList;
 
 public class OrdiniUpdaterThread extends Thread
@@ -43,12 +40,17 @@ public class OrdiniUpdaterThread extends Thread
 
         if(status == 0)
         {
-            database.setFattorinoOrdine(ID, "");
+            database.setOrdineFattorino(ID, "");
         }
     }
 
     public void impostaFattorinoOrdine(String ID, String UserID)
     {
-        database.setFattorinoOrdine(ID, UserID);
+        database.setOrdineFattorino(ID, UserID);
+    }
+
+    public void impostaPioggiaOrdine(String ID, boolean pioggia)
+    {
+        database.SetOrdinePioggia(ID, pioggia);
     }
 }

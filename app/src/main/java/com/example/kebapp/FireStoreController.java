@@ -129,6 +129,7 @@ public class FireStoreController {
                     int status;
                     double totale;
                     String ID, nome, indirizzo, orarioRichiesto, orarioInserito, note, numero, IDFattorino;
+                    boolean pioggia;
                     ArrayList<Prodotto> prodotti;
 
                     ArrayList<Map<String, Object>> prodottiArray;
@@ -153,6 +154,7 @@ public class FireStoreController {
                             orarioRichiesto = (String)data.get("orario_richiesto");
                             orarioInserito = ((Timestamp)data.get("orario_inserito")).toString();
                             IDFattorino = (String)data.get("IDfattorino");
+                            pioggia = (boolean)data.get("pioggia");
 
                             try
                             {
@@ -175,7 +177,19 @@ public class FireStoreController {
                                 prodotti.add(new Prodotto(nomeProdotto, quantitaProdotto, aggiunteProdottoString));
                             }
 
-                            result.add(new Ordine(ID, nome, indirizzo, orarioRichiesto, orarioInserito, note, numero, IDFattorino, prodotti, totale, status));
+                            result.add(new Ordine(
+                                    ID,
+                                    nome,
+                                    indirizzo,
+                                    orarioRichiesto,
+                                    orarioInserito,
+                                    note,
+                                    numero,
+                                    IDFattorino,
+                                    pioggia,
+                                    prodotti,
+                                    totale,
+                                    status));
                         }
                     }
                     else
@@ -198,6 +212,7 @@ public class FireStoreController {
         ordineMap.put("orario_inserito", new Timestamp(new Date()));
         ordineMap.put("orario_richiesto", ordine.orarioRichiesto);
         ordineMap.put("status", 0);
+        ordineMap.put("pioggia", false);
         ordineMap.put("totale", ordine.totale);
         ordineMap.put("IDfattorino", "");
 
@@ -232,9 +247,14 @@ public class FireStoreController {
         database.collection("ordini").document(ID).update("status", status);
     }
 
-    public void setFattorinoOrdine(String ID, String UserID)
+    public void setOrdineFattorino(String ID, String UserID)
     {
         database.collection("ordini").document(ID).update("IDfattorino", UserID);
+    }
+
+    public void SetOrdinePioggia(String ID, boolean pioggia)
+    {
+        database.collection("ordini").document(ID).update("pioggia", pioggia);
     }
 
     public ArrayList<Utente> getUtente(String userID, String email)
