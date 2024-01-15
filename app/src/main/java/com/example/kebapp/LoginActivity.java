@@ -74,13 +74,12 @@ public class LoginActivity extends AppCompatActivity
                 }
                 else
                 {
-                    //TODO errors not showing
-                    textInputLayoutPassword.setError("Inserisci almeno 6 caratteri");
+                    Toast.makeText(LoginActivity.this, "Password non valida",Toast.LENGTH_SHORT).show();
                 }
             }
             else
             {
-                textInputLayoutEmail.setError("Email non valida");
+                Toast.makeText(LoginActivity.this, "Email non valida",Toast.LENGTH_SHORT).show();
             }
 
         });

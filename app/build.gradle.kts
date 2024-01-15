@@ -55,7 +55,6 @@ dependencies {
     implementation("pl.droidsonroids.gif:android-gif-drawable:1.2.17")
 
     // FIREBASE
-    // TODO sostituire implementazione firebase auth
     implementation(platform("com.google.firebase:firebase-bom:32.6.0"))
     implementation("com.google.firebase:firebase-analytics")
     implementation("com.google.firebase:firebase-firestore:17.0.4")
