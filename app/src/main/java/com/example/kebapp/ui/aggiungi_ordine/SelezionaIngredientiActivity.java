@@ -5,6 +5,9 @@ import androidx.cardview.widget.CardView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -20,7 +23,7 @@ import java.util.ArrayList;
 
 public class SelezionaIngredientiActivity extends AppCompatActivity
 {
-    ArrayList<Ingrediente> listaAggiunte;
+    ArrayList<CardView> cards;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -45,7 +48,7 @@ public class SelezionaIngredientiActivity extends AppCompatActivity
             finish();
         });
 
-
+        cards = new ArrayList<>();
         for (int i=0; i < listaIngredienti.size(); i++)
         {
             newCard = new CardView(getApplicationContext());
@@ -59,6 +62,8 @@ public class SelezionaIngredientiActivity extends AppCompatActivity
             newTextView.setText(formatter.format(listaIngredienti.get(i).prezzo) + "€");
 
             linearLayoutIngredienti.addView(newCard);
+
+            cards.add(newCard);
 
             int finalI = i;
 
@@ -90,6 +95,55 @@ public class SelezionaIngredientiActivity extends AppCompatActivity
                 }
             });
         }
+
+        ((EditText)findViewById(R.id.editTextCerca)).addTextChangedListener(new TextWatcher()
+        {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
+            @Override
+            public void afterTextChanged(Editable editable) {}
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count)
+            {
+                String ricerca = s.toString().toLowerCase();
+
+                if(!ricerca.isEmpty())
+                {
+                    String nome;
+                    for (int i = 0; i < cards.size(); i++)
+                    {
+                        nome = ((TextView)cards.get(i).findViewById(R.id.textViewNomeIngrediente)).getText().toString();
+
+                        if(!nome.toLowerCase().contains(ricerca))
+                        {
+                            cards.get(i).setVisibility(View.GONE);
+                        }
+                        else
+                        {
+                            cards.get(i).setVisibility(View.VISIBLE);
+                        }
+                    }
+                }
+                else
+                {
+                    for (int i = 0; i < cards.size(); i++)
+                    {
+                        cards.get(i).setVisibility(View.VISIBLE);
+                    }
+                }
+            }
+        });
+
+        findViewById(R.id.imageViewCancelCerca).setOnClickListener(item->
+        {
+            ((EditText)findViewById(R.id.editTextCerca)).setText("");
+
+            for (int i = 0; i < cards.size(); i++)
+            {
+                cards.get(i).setVisibility(View.VISIBLE);
+            }
+        });
 
     }
 }

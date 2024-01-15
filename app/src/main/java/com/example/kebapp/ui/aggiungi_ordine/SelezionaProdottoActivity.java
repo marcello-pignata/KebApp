@@ -5,6 +5,7 @@ import androidx.cardview.widget.CardView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -21,10 +22,15 @@ public class SelezionaProdottoActivity extends AppCompatActivity
     // tag usato per debugging
     private final String TAG = "SelezionaProdottoActivity";
 
+    ArrayList<CardView> cards;
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_seleziona_prodotto);
+
+        cards = new ArrayList<>();
 
         NumberFormat formatter = new DecimalFormat("#0.00");
 
@@ -109,6 +115,48 @@ public class SelezionaProdottoActivity extends AppCompatActivity
 
             // aggiungo la nuova card al layout
             ((LinearLayout)findViewById(R.id.linearLayoutOrdini)).addView(newCard);
+            cards.add(newCard);
         }
+
+        findViewById(R.id.buttonCerca).setOnClickListener(item->
+        {
+            String ricerca = ((EditText)findViewById(R.id.editTextCerca)).getText().toString().toLowerCase();
+
+            if(!ricerca.isEmpty())
+            {
+                String nome, descrizione;
+                for (int i = 0; i < cards.size(); i++)
+                {
+                    nome = ((TextView)cards.get(i).findViewById(R.id.textViewNomeProdotto)).getText().toString();
+                    descrizione = ((TextView)cards.get(i).findViewById(R.id.textViewDescrizione)).getText().toString();
+
+                    if(!nome.toLowerCase().contains(ricerca) && !descrizione.toLowerCase().contains(ricerca))
+                    {
+                        cards.get(i).setVisibility(View.GONE);
+                    }
+                    else
+                    {
+                        cards.get(i).setVisibility(View.VISIBLE);
+                    }
+                }
+            }
+            else
+            {
+                for (int i = 0; i < cards.size(); i++)
+                {
+                   cards.get(i).setVisibility(View.VISIBLE);
+                }
+            }
+        });
+
+        findViewById(R.id.imageViewCancelCerca).setOnClickListener(item->
+        {
+            ((EditText)findViewById(R.id.editTextCerca)).setText("");
+
+            for (int i = 0; i < cards.size(); i++)
+            {
+                cards.get(i).setVisibility(View.VISIBLE);
+            }
+        });
     }
 }
