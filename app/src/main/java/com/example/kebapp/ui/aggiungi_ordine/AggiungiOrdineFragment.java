@@ -130,25 +130,33 @@ public class AggiungiOrdineFragment extends Fragment
         // onClickListener del pulsante per l'invio dell'ordine
         getView().findViewById(R.id.buttonAggiungiOrdine).setOnClickListener(item ->
         {
-            Ordine ordine = new Ordine(
-                    ((EditText)getView().findViewById(R.id.textInputNome)).getText().toString(),
-                    ((EditText)getView().findViewById(R.id.textInputIndirizzo)).getText().toString(),
-                    ((EditText)getView().findViewById(R.id.textInputOrarioRichiesto)).getText().toString(),
-                    ((EditText)getView().findViewById(R.id.textInputNote)).getText().toString(),
-                    ((EditText)getView().findViewById(R.id.textInputNumero)).getText().toString(),
-                    (ArrayList<Prodotto>) adapter.getmData(),
-                    adapter.getTotale()
-            );
-            database.putOrdine(ordine);
+            String nome = ((EditText)getView().findViewById(R.id.textInputNome)).getText().toString();
+            String indirizzo = ((EditText)getView().findViewById(R.id.textInputIndirizzo)).getText().toString();
+            String orario = ((EditText)getView().findViewById(R.id.textInputOrarioRichiesto)).getText().toString();
+            String note = ((EditText)getView().findViewById(R.id.textInputNote)).getText().toString();
+            String numero = ((EditText)getView().findViewById(R.id.textInputNumero)).getText().toString();
+            int countProdotti = adapter.getItemCount();
 
-            ((EditText)getView().findViewById(R.id.textInputNome)).setText("");
-            ((EditText)getView().findViewById(R.id.textInputIndirizzo)).setText("");
-            ((EditText)getView().findViewById(R.id.textInputOrarioRichiesto)).setText("");
-            ((EditText)getView().findViewById(R.id.textInputNote)).setText("");
-            ((EditText)getView().findViewById(R.id.textInputNumero)).setText("");
-            adapter.clear();
+            if(!nome.isEmpty() && !indirizzo.isEmpty() && !orario.isEmpty() && !numero.isEmpty() && countProdotti != 0)
+            {
+                Ordine ordine = new Ordine(nome, indirizzo, orario, note, numero, (ArrayList<Prodotto>) adapter.getmData(), adapter.getTotale());
 
-            Toast.makeText(getContext(), "Ordine inserito con successo", Toast.LENGTH_LONG).show();
+                database.putOrdine(ordine);
+
+                ((EditText)getView().findViewById(R.id.textInputNome)).setText("");
+                ((EditText)getView().findViewById(R.id.textInputIndirizzo)).setText("");
+                ((EditText)getView().findViewById(R.id.textInputOrarioRichiesto)).setText("");
+                ((EditText)getView().findViewById(R.id.textInputNote)).setText("");
+                ((EditText)getView().findViewById(R.id.textInputNumero)).setText("");
+                adapter.clear();
+
+                Toast.makeText(getContext(), "Ordine inserito con successo", Toast.LENGTH_LONG).show();
+            }
+            else
+            {
+                Toast.makeText(getContext(), "Completare tutti i campi prima di aggiungere l'ordine", Toast.LENGTH_LONG).show();
+            }
+
         });
     }
 }

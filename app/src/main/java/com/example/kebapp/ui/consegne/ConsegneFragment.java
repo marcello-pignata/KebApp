@@ -38,20 +38,21 @@ public class ConsegneFragment extends Fragment {
     {
         if (!((MainActivity)getActivity()).utente.get(0).fattorino)
         {
+            getView().findViewById(R.id.buttonAggiorna).setVisibility(View.GONE);
             ((TextView)getView().findViewById(R.id.textViewAvvisi)).setText("Questa pagina è visualizzabile soltanto dai fattorini");
         }
         else
         {
             getView().findViewById(R.id.textViewAvvisi).setVisibility(View.GONE);
-        }
 
-        AggiornaConsegne();
-
-        // onClickListener del pulsante "Aggiorna"
-        getView().findViewById(R.id.buttonAggiorna).setOnClickListener(item ->
-        {
             AggiornaConsegne();
-        });
+
+            // onClickListener del pulsante "Aggiorna"
+            getView().findViewById(R.id.buttonAggiorna).setOnClickListener(item ->
+            {
+                AggiornaConsegne();
+            });
+        }
 
     }
 
@@ -73,13 +74,13 @@ public class ConsegneFragment extends Fragment {
         if(!consegne.isEmpty())
         {
             getView().findViewById(R.id.textViewAvvisi).setVisibility(View.GONE);
-            ((MainActivity)getActivity()).RefreshOrdini(getView(), consegne);
+            ((MainActivity)getActivity()).RefreshOrdini(getView(), consegne, false);
         }
         else
         {
             ((LinearLayout)getView().findViewById(R.id.linearLayoutOrdini)).removeAllViews();
             getView().findViewById(R.id.textViewAvvisi).setVisibility(View.VISIBLE);
-            ((TextView)getView().findViewById(R.id.textViewAvvisi)).setText("Non sono presenti ordini a tuo nome");
+            ((TextView)getView().findViewById(R.id.textViewAvvisi)).setText("Non sono presenti consegne a tuo carico");
         }
     }
 }

@@ -5,6 +5,10 @@
     <color name="purple_700">#FF3700B3</color>
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
+
+    <color name="cornflowerBlue">#FF6495ED</color>
+    <color name="gildedLily">#FFC4C4FC</color>
+
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="cyan">#19B6F3</color>
@@ -17,4 +21,6 @@
     <color name="red_in_preparazione">#ff0000</color>
     <color name="gray">#7F7F7F</color>
     <color name="deep_sea">#FF018787</color>
+    <color name="background">#F5E9EE</color>
+    <color name="transparent">#00000000</color>
 </resources>

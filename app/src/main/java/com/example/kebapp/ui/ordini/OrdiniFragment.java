@@ -97,7 +97,7 @@ public class OrdiniFragment extends Fragment
                     try
                     {
                         // aggiorno la pagina degli ordini, utilizzando la più recente lista di ordini presente su OrdiniUpdaterThread
-                        ((MainActivity)getActivity()).RefreshOrdini(getView(), updater.updatedOrdini);
+                        ((MainActivity)getActivity()).RefreshOrdini(getView(), updater.updatedOrdini, true);
                     }
                     catch(Exception e){}
                 }
@@ -114,14 +114,14 @@ public class OrdiniFragment extends Fragment
             buttonAggiorna.setVisibility(View.VISIBLE);
 
             // aggiorno la pagina degli ordini, utilizzando la più recente lista di ordini presente su OrdiniUpdaterThread
-            ((MainActivity)getActivity()).RefreshOrdini(getView(), updater.updatedOrdini);
+            ((MainActivity)getActivity()).RefreshOrdini(getView(), updater.updatedOrdini, true);
         }
 
         // onClickListener del pulsante "Aggiorna"
         buttonAggiorna.setOnClickListener(item ->
         {
             // aggiorno la pagina degli ordini, utilizzando la più recente lista di ordini presente su OrdiniUpdaterThread
-            ((MainActivity)getActivity()).RefreshOrdini(getView(), updater.updatedOrdini);
+            ((MainActivity)getActivity()).RefreshOrdini(getView(), updater.updatedOrdini, true);
         });
     }
 

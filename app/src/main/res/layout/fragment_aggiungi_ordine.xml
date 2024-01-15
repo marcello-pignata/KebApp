@@ -5,7 +5,8 @@
     android:id="@+id/constraintLayoutAggiungiOrdine"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.aggiungi_ordine.AggiungiOrdineFragment" >
+    tools:context=".ui.aggiungi_ordine.AggiungiOrdineFragment"
+    android:background="@drawable/background">
 
     <ScrollView
         android:id="@+id/scrollViewAggiungiOrdine"
@@ -25,16 +26,27 @@
             android:orientation="vertical"
             android:padding="30dp">
 
-            <TextView
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="4dp"
+                    android:fontFamily="@font/sf_black"
+                    android:text="AGGIUNGI ORDINE"
+                    android:textColor="@color/black"
+                    android:textSize="25dp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0" />
+
+            <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:layout_margin="10dp"
-                android:fontFamily="@font/sf_black"
-                android:text="AGGIUNGI ORDINE"
-                android:textColor="@color/deep_blue"
-                android:textSize="20dp"
-                android:textStyle="bold" />
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="left"
+                android:layout_marginStart="10dp">
 
             <TextView
                 android:id="@+id/textViewIndirizzo"
@@ -46,14 +58,19 @@
                 android:text="Indirizzo"
                 android:textColor="#000000"
                 android:textStyle="italic"
+                android:textSize="18dp"
                 tools:layout_editor_absoluteX="16dp"
                 tools:layout_editor_absoluteY="19dp" />
+
+            </LinearLayout>
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_margin="10dp"
-                app:cardElevation="10dp">
+                app:cardElevation="0dp"
+                app:cardCornerRadius="10dp"
+                app:cardBackgroundColor="#AAFFFFFF">
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/textInputLayoutIndirizzo"
@@ -71,11 +88,19 @@
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
                         android:layout_marginBottom="5dp"
-                        android:background="#FFFFFF"
+                        android:background="#00000000"
                         android:gravity="center" />
                 </com.google.android.material.textfield.TextInputLayout>
+
             </androidx.cardview.widget.CardView>
 
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="left"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="20dp">
             <TextView
                 android:id="@+id/textViewNomeUtente"
                 android:layout_width="wrap_content"
@@ -86,13 +111,17 @@
                 android:textColor="#000000"
                 android:textStyle="italic"
                 tools:layout_editor_absoluteX="16dp"
-                tools:layout_editor_absoluteY="134dp" />
+                android:textSize="18dp"
+                tools:layout_editor_absoluteY="134dp"/>
+        </LinearLayout>
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_margin="10dp"
-                app:cardElevation="10dp">
+                app:cardElevation="0dp"
+                app:cardCornerRadius="10dp"
+                app:cardBackgroundColor="#AAFFFFFF">
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/textInputLayoutNome"
@@ -110,11 +139,18 @@
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
                         android:layout_marginBottom="5dp"
-                        android:background="#FFFFFF"
+                        android:background="#00FFFFFF"
                         android:gravity="center" />
                 </com.google.android.material.textfield.TextInputLayout>
             </androidx.cardview.widget.CardView>
 
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="left"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="20dp">
             <TextView
                 android:id="@+id/textViewNumero"
                 android:layout_width="wrap_content"
@@ -124,15 +160,19 @@
                 android:text=" Numero"
                 android:textColor="#000000"
                 android:textStyle="italic"
+                android:textSize="18dp"
                 tools:layout_editor_absoluteX="16dp"
                 tools:layout_editor_absoluteY="134dp" />
+        </LinearLayout>
 
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_margin="10dp"
-                app:cardElevation="10dp">
+                app:cardElevation="0dp"
+                app:cardCornerRadius="10dp"
+                app:cardBackgroundColor="#AAFFFFFF">
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/textInputLayoutNumero"
@@ -150,12 +190,19 @@
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
                         android:layout_marginBottom="5dp"
-                        android:background="#FFFFFF"
+                        android:background="#00FFFFFF"
                         android:gravity="center"
                         android:inputType="number" />
                 </com.google.android.material.textfield.TextInputLayout>
             </androidx.cardview.widget.CardView>
 
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="left"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="20dp">
             <TextView
                 android:id="@+id/textViewOrarioRichiesto"
                 android:layout_width="wrap_content"
@@ -165,14 +212,18 @@
                 android:text=" Orario richiesto"
                 android:textColor="#000000"
                 android:textStyle="italic"
+                android:textSize="18dp"
                 tools:layout_editor_absoluteX="16dp"
                 tools:layout_editor_absoluteY="134dp" />
+        </LinearLayout>
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_margin="10dp"
-                app:cardElevation="10dp">
+                app:cardElevation="0dp"
+                app:cardCornerRadius="10dp"
+                app:cardBackgroundColor="#AAFFFFFF">
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/textInputLayoutOrarioRichiesto"
@@ -190,12 +241,19 @@
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
                         android:layout_marginBottom="5dp"
-                        android:background="#FFFFFF"
+                        android:background="#00FFFFFF"
                         android:gravity="center"/>
 
                 </com.google.android.material.textfield.TextInputLayout>
             </androidx.cardview.widget.CardView>
 
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="left"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="20dp">
             <TextView
                 android:id="@+id/textViewNote"
                 android:layout_width="wrap_content"
@@ -205,14 +263,18 @@
                 android:text="Note"
                 android:textColor="#000000"
                 android:textStyle="italic"
+                android:textSize="18dp"
                 tools:layout_editor_absoluteX="16dp"
                 tools:layout_editor_absoluteY="134dp" />
+        </LinearLayout>
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_margin="10dp"
-                app:cardElevation="10dp">
+                app:cardElevation="0dp"
+                app:cardCornerRadius="10dp"
+                app:cardBackgroundColor="#AAFFFFFF">
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/textInputLayoutNote"
@@ -230,7 +292,7 @@
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
                         android:layout_marginBottom="5dp"
-                        android:background="#FFFFFF"
+                        android:background="#00FFFFFF"
                         android:gravity="center" />
                 </com.google.android.material.textfield.TextInputLayout>
             </androidx.cardview.widget.CardView>
@@ -239,28 +301,27 @@
                 android:id="@+id/linearLayoutProdotti"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="60dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="60dp"
-                android:orientation="horizontal">
+                android:layout_marginTop="30dp"
+                android:orientation="horizontal"
+                android:gravity="right">
 
                 <TextView
                     android:id="@+id/textViewProdotti"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:gravity="center"
                     android:text="Aggiungi prodotti"
                     android:textColor="#000000"
-                    android:textSize="15dp" />
+                    android:textStyle="italic"
+                    android:textSize="18dp"
+                    android:drawableStart="@drawable/baseline_pizza_24"
+                    android:layout_marginStart="10dp"/>
 
                 <Button
                     android:id="@+id/buttonAggiungiProdotto"
                     android:layout_width="55dp"
                     android:layout_height="wrap_content"
-                    android:backgroundTint="@color/button_background_change"
-                    android:drawableLeft="@drawable/baseline_add_24"
-                    android:gravity="center" />
+                    android:drawableLeft="@drawable/baseline_add_24"/>
             </LinearLayout>
 
             <LinearLayout
@@ -306,7 +367,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:backgroundTint="@color/button_background_change"
                 android:text="Aggiungi ordine"
                 tools:layout_editor_absoluteX="148dp"
                 tools:layout_editor_absoluteY="127dp" />
