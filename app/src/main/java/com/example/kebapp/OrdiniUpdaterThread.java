@@ -1,5 +1,9 @@
 package com.example.kebapp;
-
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
 public class OrdiniUpdaterThread extends Thread
@@ -10,10 +14,13 @@ public class OrdiniUpdaterThread extends Thread
     private FireStoreController database;
     public ArrayList<Ordine> updatedOrdini;
 
-    public OrdiniUpdaterThread()
+    private MainActivity mainActivity;
+
+    public OrdiniUpdaterThread(MainActivity mainActivity)
     {
         updatedOrdini = new ArrayList<>();
         database = new FireStoreController();
+        this.mainActivity = mainActivity;
     }
     @Override
     synchronized public void run()
@@ -23,12 +30,44 @@ public class OrdiniUpdaterThread extends Thread
             try
             {
                 wait(REFRESH_RATE);
-                updatedOrdini = database.getOrdini();
+
+                if(mainActivity.isNetworkAvailable())
+                {
+                    try
+                    {
+                        FileOutputStream fos = mainActivity.openFileOutput("ordini.ser", mainActivity.MODE_PRIVATE);
+                        ObjectOutputStream os = new ObjectOutputStream(fos);
+                        os.writeObject(updatedOrdini);
+                        os.close();
+                        fos.close();
+                    }
+                    catch (IOException i)
+                    {
+                        i.printStackTrace();
+                    }
+
+                    updatedOrdini = database.getOrdini();
+                }
+                else
+                {
+                    try
+                    {
+                        FileInputStream fis = mainActivity.openFileInput("ordini.ser");
+                        ObjectInputStream is = new ObjectInputStream(fis);
+                        updatedOrdini = (ArrayList<Ordine>) is.readObject();
+                        is.close();
+                        fis.close();
+                    }
+                    catch (IOException i)
+                    {
+                        i.printStackTrace();
+                        return;
+                    }
+                }
             }
             catch (Exception e){}
         }
     }
-
     public void eliminaOrdine(String ID)
     {
         database.deleteOrdine(ID);

@@ -13,6 +13,45 @@
         android:layout_height="match_parent"
         tools:context=".ui.ordini.OrdiniFragment" >
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+            <Button
+                android:id="@+id/buttonAggiorna"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Aggiorna"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center">
+                <TextView
+                    android:id="@+id/textViewOffline"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:textSize="15dp"
+                    android:visibility="gone"
+                    android:text="Nessuna connessione a internet disponibile\nPotrebbero esserci nuovi ordini non visualizzati" />
+            </LinearLayout>
+
+        </LinearLayout>
+        <TextView
+            android:id="@+id/textViewAvvisi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            android:textSize="30dp"
+            android:textColor="@color/black"
+            android:layout_marginTop="270dp"
+            android:textAlignment="center"/>
+
         <ScrollView
             android:id="@+id/scrollViewConsegne"
             android:layout_width="match_parent"
@@ -28,17 +67,10 @@
                 android:id="@+id/linearLayoutOrdini"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical" >
+                android:orientation="vertical"
+                android:gravity="center">
 
-                <TextView
-                    android:id="@+id/textViewAvvisi"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="TextView"
-                    android:textSize="30dp"
-                    android:textColor="@color/black"
-                    android:layout_marginTop="400dp"
-                    android:textAlignment="center"/>
+
             </LinearLayout>
 
         </ScrollView>

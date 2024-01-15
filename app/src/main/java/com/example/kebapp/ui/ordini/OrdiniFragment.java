@@ -58,7 +58,7 @@ public class OrdiniFragment extends Fragment
     {
         super.onCreate(savedInstanceState);
 
-        ((MainActivity)getActivity()).updater = new OrdiniUpdaterThread();
+        ((MainActivity)getActivity()).updater = new OrdiniUpdaterThread((MainActivity) getActivity());
 
         updater = ((MainActivity)getActivity()).updater;
 

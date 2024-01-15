@@ -1,6 +1,8 @@
 package com.example.kebapp;
 
 import android.annotation.SuppressLint;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
@@ -26,13 +28,19 @@ import com.example.kebapp.databinding.ActivityMainBinding;
 import com.google.firebase.auth.FirebaseAuth;
 
 import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ExecutorService;
@@ -68,10 +76,31 @@ public class MainActivity extends AppCompatActivity
         NavigationUI.setupWithNavController(binding.navView, navController);
     }
 
+    public boolean isNetworkAvailable()
+    {
+        ConnectivityManager connectivityManager
+                = (ConnectivityManager) getSystemService(this.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager != null ? connectivityManager.getActiveNetworkInfo() : null;
+        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
+    }
+
     // funzione che mostra nel fragment degli ordini gli ordini più recenti
     @SuppressLint("SetTextI18n")
     public void RefreshOrdini(View currentView, ArrayList<Ordine> ordini)
     {
+        if(!isNetworkAvailable())
+        {
+            currentView.findViewById(R.id.textViewOffline).setVisibility(View.VISIBLE);
+        }
+        else
+        {
+            currentView.findViewById(R.id.textViewOffline).setVisibility(View.GONE);
+        }
+
+
+        // ordini gli ordini in base allo stato
+        Collections.sort(ordini, Comparator.comparing(Ordine::getStatus));
+
         // inizializzo il riferimento al layout contenente tutti gli ordini
         LinearLayout layout = currentView.findViewById(R.id.linearLayoutOrdini);
 

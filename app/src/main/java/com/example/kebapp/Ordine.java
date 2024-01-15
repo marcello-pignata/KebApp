@@ -1,11 +1,9 @@
 package com.example.kebapp;
-
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Ordine
+public class Ordine implements Serializable
 {
-    public Ordine() {}
-
     public String ID;
 
     public String nome;
@@ -20,6 +18,22 @@ public class Ordine
     public ArrayList<Prodotto> prodotti;
     public double totale;
     public int status;
+
+    public Ordine()
+    {
+        ID = "";
+        nome = "";
+        indirizzo = "";
+        orarioRichiesto = "";
+        orarioInserito = "";
+        note = "";
+        numero = "";
+        IDFattorino = "";
+        pioggia = false;
+        prodotti = new ArrayList<>();
+        totale = 0.0;
+        status = 0;
+    }
 
     public Ordine(
             String ID,
@@ -66,5 +80,10 @@ public class Ordine
         this.numero = numero;
         this.prodotti = prodotti;
         this.totale = totale;
+    }
+
+    public int getStatus()
+    {
+        return status;
     }
 }

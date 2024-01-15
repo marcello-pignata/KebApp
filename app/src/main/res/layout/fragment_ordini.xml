@@ -27,6 +27,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="right"
+            android:orientation="vertical"
             android:padding="10dp">
 
             <Button
@@ -36,7 +37,24 @@
                 android:text="Aggiorna"
                 android:visibility="invisible"/>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center">
+            <TextView
+            android:id="@+id/textViewOffline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textSize="15dp"
+            android:visibility="gone"
+            android:text="Nessuna connessione a internet disponibile\nPotrebbero esserci nuovi ordini non visualizzati" />
+            </LinearLayout>
+
         </LinearLayout>
+
+
 
         <ScrollView
             android:id="@+id/scrollViewOrdini"
@@ -53,7 +71,11 @@
                 android:id="@+id/linearLayoutOrdini"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical" />
+                android:orientation="vertical"
+                android:gravity="center">
+
+
+            </LinearLayout>
 
         </ScrollView>
 

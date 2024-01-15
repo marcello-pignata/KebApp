@@ -109,7 +109,6 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
                     android:layout_marginTop="-1dp"
-                    android:drawableRight="@drawable/baseline_content_copy_24"
                     android:fontFamily="@font/sf_black"
                     android:maxWidth="220dp"
                     android:text="via San Paolo 24, Cernusco "
